@@ -5,7 +5,7 @@
 ### Who the film is about
 - **Subject:** my late grandmother, whom the family calls **Emaye**. She came to Addis Ababa from a small town in the south in the 1960s, at about 16, to continue her education.
 - **How she appears:** only as an **invented, AI-generated figure**, always seen from behind, in silhouette or at a distance. **No clear face is ever shown.** **No photograph of her was used** as input to any model, and the figure isn't a reconstruction of her real appearance. Her life stages are shown through clothing: L1 day-to-day clothes, L2 school uniform, L3 a mother's dress with a head covering.
-- **Voice:** she isn't voiced. The narration is a **stock Gemini TTS voice** speaking as a grandchild. No voice was cloned or replicated, and no words are put in her mouth: the narration describes her in the third person.
+- **Voice:** she isn't voiced. The narration is a **stock Addis AI TTS voice** (`am-hamen`) speaking as a grandchild. No voice was cloned or replicated, and no words are put in her mouth: the narration describes her in the third person.
 
 ### Who gave consent, and how
 | Field | Record |
@@ -24,7 +24,7 @@
 ### Facts used in the film, and where they came from
 All biographical facts in the narration were confirmed by the family elders on 2026-11-25:
 - She came to Addis Ababa in the 1960s, at about 16.
-- In her area there was no school beyond elementary.
+- In her area, school didn't go beyond fifth grade.
 - She made the journey on foot.
 - She knew no one in the city.
 - She finished middle school and started high school.
@@ -45,7 +45,8 @@ The town is deliberately not named.
 | Keyframes | FLUX.2 [klein] **4B** on Cloudflare Workers AI | Apache 2.0 (model); Cloudflare terms (service) | 4B chosen deliberately: the 9B variant is non-commercial |
 | Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 | Wan claims no rights over generated content; responsibility for use is mine |
 | Score | ACE-Step 1.5 | MIT | The brief states outputs may be used commercially. I couldn't confirm the training-data statement on the model pages I read; I'm relying on the brief for it. |
-| Narration | Gemini 3.8 Flash TTS (final), Gemini 3.8 Flash Lite TTS (experiments) | Gemini API terms: https://ai.google.dev/gemini-api/terms | Free tier: see §4 on data use |
+| Narration | **Addis AI** TTS, voice `am-hamen` (chosen in E1) | Addis AI Terms: **TO CHECK** at addisassistant.com before posting (ownership and public use of generated audio; use of submitted text). The pricing page doesn't say. | Paid, about 5 ETB/min; $3.17 free signup credit |
+| Narration experiments | Gemini 3.8 Flash TTS / Flash Lite TTS | Gemini API terms: https://ai.google.dev/gemini-api/terms | Free tier: see §4 on data use |
 | Subtitles / translation | Gemini 3.8 Flash | Gemini API terms | |
 | Assembly | FFmpeg | LGPL/GPL (tool); no claim on output | |
 | Coding agent | Antigravity CLI | Google terms | |

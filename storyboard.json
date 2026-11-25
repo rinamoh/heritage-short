@@ -1,0 +1,363 @@
+{
+  "title": "Emaye",
+  "audience": "my family: Emaye's children, grandchildren and great-grandchildren.",
+  "intent": "at the end they feel grateful, and remember that we're here because of the sacrifice of the people who came before us. Tone: emotional but restrained.",
+  "language": "am",
+  "style_block": "1960s Ethiopia, warm golden-hour light, soft film grain, muted earth tones, painterly, gentle, not photorealistic, no text, no readable writing",
+  "character": {
+    "base": "a slim young Ethiopian woman with dark brown skin and black hair, always seen from behind or at a distance, face not visible",
+    "looks": [
+      {
+        "id": "L1",
+        "stage": "Age 16, leaving home and arriving",
+        "clothing": "Her day-to-day clothes: a simple, modest village dress; hair in a ponytail",
+        "carries": "The plain, faded greyish-black cloth bundle",
+        "ref_image": null
+      },
+      {
+        "id": "L2",
+        "stage": "Student in Addis",
+        "clothing": "School uniform; hair in a ponytail",
+        "carries": "School bag, closed books",
+        "ref_image": null
+      },
+      {
+        "id": "L3",
+        "stage": "Mother",
+        "clothing": "A dress with a head covering, as Ethiopian mothers commonly wear",
+        "carries": "",
+        "ref_image": null
+      }
+    ]
+  },
+  "voice": {
+    "provider": "addis",
+    "model": null,
+    "name": "am-hamen",
+    "style": null,
+    "settings": {}
+  },
+  "music": {
+    "caption": "gentle Ethiopian-inspired instrumental, soft plucked krar-like strings, warm pad, sparse, nostalgic, slow build, no vocals",
+    "bpm": 72,
+    "key": "D minor",
+    "duration_s": 80,
+    "instrumental": true,
+    "seed": 11,
+    "cues": [
+      {
+        "id": "1",
+        "in_s": 0,
+        "out_s": 24,
+        "shots": ["s01", "s02", "s03"],
+        "description": "Very sparse, warm; a single plucked string and a soft pad; no melody"
+      },
+      {
+        "id": "2",
+        "in_s": 24,
+        "out_s": 36,
+        "shots": ["s04", "s05"],
+        "description": "The same texture thins out; s05 is near-silent"
+      },
+      {
+        "id": "3",
+        "in_s": 36,
+        "out_s": 60,
+        "shots": ["s06", "s07", "s08"],
+        "description": "A gentle pulse enters; still low under the voice"
+      },
+      {
+        "id": "4",
+        "in_s": 60,
+        "out_s": 76,
+        "shots": ["s09", "s10"],
+        "description": "Fuller; the cue 1 motif returns"
+      },
+      {
+        "id": "end",
+        "in_s": 76,
+        "out_s": 79,
+        "shots": ["end"],
+        "description": "One sustained note fading"
+      }
+    ],
+    "chosen": null
+  },
+  "output": {
+    "fps": 24,
+    "ratios": ["9:16", "16:9"],
+    "end_card_s": 3
+  },
+  "shots": [
+    {
+      "id": "s01",
+      "beat": "Today",
+      "reason": "Opens on the motif and on \"us\"",
+      "shot_size": "Close-up",
+      "look": null,
+      "duration_s": 7,
+      "narration": {
+        "text_am": "ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው።"
+      },
+      "subtitle_en": [
+        ["We are only here because of her."]
+      ],
+      "keyframe": {
+        "prompt": "A modern desk lamp glowing over an open book with blank pages, night",
+        "seed": 101
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Gentle slow push-in toward the glowing lamp and open pages",
+        "seed": 101,
+        "kb_direction": "in"
+      }
+    },
+    {
+      "id": "s02",
+      "beat": "Where she came from",
+      "reason": "Establishing: the world she'll leave",
+      "shot_size": "Extreme wide",
+      "look": null,
+      "duration_s": 7,
+      "narration": {
+        "text_am": "በደቡብ ኢትዮጵያ ባለች አንዲት ትንሽ ከተማ፣ ትምህርት ከአምስተኛ ክፍል አያልፍም ነበር።"
+      },
+      "subtitle_en": [
+        [
+          "In a small town in southern Ethiopia,",
+          "school ended after fifth grade."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "A 1960s southern Ethiopian highland town at dawn: mist, hills, enset plants, round thatched houses",
+        "seed": 102
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Slow horizontal drift across the misty highland valley at dawn",
+        "seed": 102,
+        "kb_direction": "right"
+      }
+    },
+    {
+      "id": "s03",
+      "beat": "The decision",
+      "reason": "The heart of the film: longest, quietest hold",
+      "shot_size": "Medium, from behind",
+      "look": "L1",
+      "duration_s": 10,
+      "narration": {
+        "text_am": "እማዬ በአሥራ ስድስት ዓመቷ፣ የማታውቀው ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች።"
+      },
+      "subtitle_en": [
+        [
+          "At sixteen, Emaye chose to go to a land",
+          "she didn't know, to keep learning."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "A girl of 16 at a doorway at dawn, holding a plain faded greyish-black cloth bundle",
+        "seed": 103
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Very slow hold pushing gently toward the doorway silhouette",
+        "seed": 103,
+        "kb_direction": "in"
+      }
+    },
+    {
+      "id": "s04",
+      "beat": "Leaving alone",
+      "reason": "Shows \"alone\" and \"on foot\" through scale",
+      "shot_size": "Wide",
+      "look": "L1",
+      "duration_s": 7,
+      "narration": {
+        "text_am": "የምታውቀውን ሁሉ ትታ፣ በእግሯ ተጓዘች። ብቻዋን።"
+      },
+      "subtitle_en": [
+        [
+          "She left everything she knew, and walked.",
+          "Alone."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "One small figure walking on a red dirt road between green hills, the bundle in her hand",
+        "seed": 104
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Steady wide drift tracking along the winding red dirt road",
+        "seed": 104,
+        "kb_direction": "left"
+      }
+    },
+    {
+      "id": "s05",
+      "beat": "Silence",
+      "reason": "Planned silence: the cost of leaving",
+      "shot_size": "Close-up",
+      "look": null,
+      "duration_s": 5,
+      "narration": {
+        "text_am": ""
+      },
+      "subtitle_en": [],
+      "keyframe": {
+        "prompt": "The doorway she left, empty, morning light",
+        "seed": 105
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Quiet slow pull-back from the empty sun-lit doorway",
+        "seed": 105,
+        "kb_direction": "out"
+      }
+    },
+    {
+      "id": "s06",
+      "beat": "Arrival",
+      "reason": "The city is enormous; she knows no one",
+      "shot_size": "Extreme wide",
+      "look": "L1",
+      "duration_s": 7,
+      "narration": {
+        "text_am": "አዲስ አበባ እጅግ ሰፊ ነበረች፤ እሷ ደግሞ ማንንም አታውቅም ነበር።"
+      },
+      "subtitle_en": [
+        [
+          "Addis Ababa was enormous,",
+          "and she knew no one."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "1960s Addis Ababa at dusk, her tiny at the edge of the frame, bundle in hand",
+        "seed": 106
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Slow pan across the dusk cityscape revealing its scale",
+        "seed": 106,
+        "kb_direction": "right"
+      }
+    },
+    {
+      "id": "s07",
+      "beat": "The struggle",
+      "reason": "Motif introduced; struggle and study",
+      "shot_size": "Close-up",
+      "look": null,
+      "duration_s": 8,
+      "narration": {
+        "text_am": "ማታ ማታ፣ ላለመበለጥ በኩራዝ ብርሃን ታጠና ነበር።"
+      },
+      "subtitle_en": [
+        [
+          "At night, by the light of a kuraz,",
+          "she studied so she wouldn't fall behind."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "A lit kuraz on a bare wooden table in a small rented room at night; the cloth bundle in the corner",
+        "seed": 107
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Intimate slow push-in toward the flickering kuraz flame",
+        "seed": 107,
+        "kb_direction": "in"
+      }
+    },
+    {
+      "id": "s08",
+      "beat": "The only woman",
+      "reason": "\"Only woman\" without a crowd",
+      "shot_size": "Medium, from behind",
+      "look": "L2",
+      "duration_s": 8,
+      "narration": {
+        "text_am": "በክፍሏ ውስጥ ብዙ ጊዜ ብቸኛዋ ሴት እሷ ነበረች። መካከለኛ ደረጃን አጠናቃ፣ ሁለተኛ ደረጃ ጀመረች።"
+      },
+      "subtitle_en": [
+        [
+          "In her classroom, she was often",
+          "the only woman."
+        ],
+        [
+          "She finished middle school",
+          "and began high school."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "An empty classroom in morning light: her at one wooden desk, school bag, closed books; a map on the wall in soft focus",
+        "seed": 108
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Calm slow lateral drift across the empty sunlit classroom",
+        "seed": 108,
+        "kb_direction": "left"
+      }
+    },
+    {
+      "id": "s09",
+      "beat": "Passing it on",
+      "reason": "Generations told by light, not faces",
+      "shot_size": "Medium, from behind",
+      "look": "L3",
+      "duration_s": 8,
+      "narration": {
+        "text_am": "ልጆቿንም፣ ለትምህርት ማንኛውንም መንገድ መጓዝ እንደሚገባ አስተማረች።"
+      },
+      "subtitle_en": [
+        [
+          "And she taught her children",
+          "that learning is worth any road."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "A mother at a family table; a kuraz lit; children's notebooks",
+        "seed": 109
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Warm slow push-in toward the kuraz and open notebooks",
+        "seed": 109,
+        "kb_direction": "in"
+      }
+    },
+    {
+      "id": "s10",
+      "beat": "Return",
+      "reason": "Motif closes the loop; theme peaks",
+      "shot_size": "Wide, slow pull-back",
+      "look": null,
+      "duration_s": 8,
+      "narration": {
+        "text_am": "ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። እናመሰግናለን፣ እማዬ።"
+      },
+      "subtitle_en": [
+        [
+          "Every lamp we light today",
+          "was lit from hers."
+        ],
+        [
+          "An educated person may fall, but never",
+          "falls for good. Thank you, Emaye."
+        ]
+      ],
+      "keyframe": {
+        "prompt": "Today's home at night: several lamps lit over study desks, no people's faces",
+        "seed": 110
+      },
+      "motion": {
+        "method": "kenburns",
+        "prompt": "Wide slow pull-back revealing the glowing lamps across the room",
+        "seed": 110,
+        "kb_direction": "out"
+      }
+    }
+  ]
+}

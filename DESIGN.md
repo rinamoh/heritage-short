@@ -9,7 +9,7 @@
 - **Who I listened to:** the family elders (Emaye's children), through the family group chat, on 2026-11-25. The same conversation in which they gave consent (see `ETHICS.md`).
 - **What they confirmed:**
   - She came to Addis Ababa in the **1960s**, at about **16**.
-  - In her area there was **no school beyond elementary**.
+  - In her area, **school didn't go beyond fifth grade**.
   - She made the journey **on foot**, alone, and **knew no one** in the city.
   - She finished middle school and started high school.
   - She was **often the only educated woman** in the groups she was part of.
@@ -49,7 +49,7 @@ Constant across all looks: the same woman (same build, skin tone and hair), neve
 
 ## Story
 - **Logline:** In the 1960s, a sixteen-year-old girl walks alone from a small town in the south to Addis Ababa to keep learning, and lights the lamp her whole family still studies by.
-- **Treatment:** We are only here because of her. In the 1960s, school in her small southern town ended after elementary, so at sixteen she wrapped her clothes in a cloth bundle and walked, alone, to Addis Ababa. In a city where she knew no one, she studied at night by a kuraz and was often the only woman in her class. She finished middle school, began high school, and taught her children that learning is worth any road. Every lamp lit in our family today was lit from hers.
+- **Treatment:** We are only here because of her. In the 1960s, school in her small southern town ended after fifth grade, so at sixteen she wrapped her clothes in a cloth bundle and walked, alone, to Addis Ababa. In a city where she knew no one, she studied at night by a kuraz and was often the only woman in her class. She finished middle school, began high school, and taught her children that learning is worth any road. Every lamp lit in our family today was lit from hers.
 
 ## Shot plan (v1, before Test 1)
 | # | Beat | Size | What we see (no clear face) | Look | Reason | ~s |
@@ -66,21 +66,27 @@ Constant across all looks: the same woman (same build, skin tone and hair), neve
 | s10 | Return | Wide, slow pull-back | Today's home at night: several lamps lit over study desks, no people's faces | — | Motif closes the loop; theme peaks | 8 |
 | end | End card | — | "Made with AI" + models | — | Required | 3 |
 
-## Narration draft (English meaning; final Amharic written by me)
-| # | Line |
-|---|---|
-| s01 | We are only here because of her. |
-| s02 | In the 1960s, in a small town in the south, school ended after elementary. |
-| s03 | At sixteen, before the sun rose, she chose to keep learning. |
-| s04 | She left everything she knew, and walked. Alone. |
-| s05 | *(silence: music only)* |
-| s06 | Addis Ababa was enormous, and she knew no one. |
-| s07 | At night, by the light of a kuraz, she studied. |
-| s08 | In her classroom, she was often the only woman. She finished middle school, and began high school. |
-| s09 | And she taught her children that learning is worth any road. |
-| s10 | Every lamp we light today was lit from hers. የተማረ ወድቆ አይወድቅም። Thank you, Emaye. |
+## Narration (final v1) and subtitles
 
-Word count (English): about 110. **Measure the real length from the Amharic TTS output.** If it's under 60 s, lengthen the holds (s03, s05, s10) before adding words.
+Narrator: a grandchild, third person. Provider: **Addis AI**, voice `am-hamen` (chosen in E1).
+
+| Shot | Amharic narration | English subtitle cue(s) (≤ 2 lines × 42 chars each; `/` = line break) |
+|---|---|---|
+| s01 | ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው። | We are only here because of her. |
+| s02 | በደቡብ ኢትዮጵያ ባለች አንዲት ትንሽ ከተማ፣ ትምህርት ከአምስተኛ ክፍል አያልፍም ነበር። | In a small town in southern Ethiopia, / school ended after fifth grade. |
+| s03 | እማዬ በአሥራ ስድስት ዓመቷ፣ የማታውቀው ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች። | At sixteen, Emaye chose to go to a land / she didn't know, to keep learning. |
+| s04 | የምታውቀውን ሁሉ ትታ፣ በእግሯ ተጓዘች። ብቻዋን። | She left everything she knew, and walked. / Alone. |
+| s05 | *(silence: music only)* | *(none)* |
+| s06 | አዲስ አበባ እጅግ ሰፊ ነበረች፤ እሷ ደግሞ ማንንም አታውቅም ነበር። | Addis Ababa was enormous, / and she knew no one. |
+| s07 | ማታ ማታ፣ ላለመበለጥ በኩራዝ ብርሃን ታጠና ነበር። | At night, by the light of a kuraz, / she studied so she wouldn't fall behind. |
+| s08 | በክፍሏ ውስጥ ብዙ ጊዜ ብቸኛዋ ሴት እሷ ነበረች። መካከለኛ ደረጃን አጠናቃ፣ ሁለተኛ ደረጃ ጀመረች። | **Cue 1:** In her classroom, she was often / the only woman. **Cue 2:** She finished middle school / and began high school. |
+| s09 | ልጆቿንም፣ ለትምህርት ማንኛውንም መንገድ መጓዝ እንደሚገባ አስተማረች። | And she taught her children / that learning is worth any road. |
+| s10 | ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። እናመሰግናለን፣ እማዬ። | **Cue 1:** Every lamp we light today / was lit from hers. **Cue 2:** An educated person may fall, but never / falls for good. Thank you, Emaye. |
+
+Notes:
+- s02 doesn't say "1960s" aloud: in Amharic a year can be heard as the Ethiopian calendar, and TTS misreads numerals. The period is carried by the pictures.
+- Multi-cue shots (s08, s10) split the shot's time across cues in proportion to their text length.
+- **Measure the real length from the TTS output.** If it's under 60 s, lengthen the holds (s03, s05, s10) before adding words.
 
 ## Music spotting (v1)
 | Cue | In–out (approx.) | Shots | Description |
