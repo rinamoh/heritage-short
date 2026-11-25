@@ -1,0 +1,6 @@
+google-genai>=2.25.0
+requests
+python-dotenv
+jsonschema
+Pillow
+addisai

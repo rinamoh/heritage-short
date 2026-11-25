@@ -47,3 +47,14 @@
   2. Narration uses Flash TTS; experiments use Flash Lite TTS. That doubles the daily TTS budget to 20 calls and gives a free model comparison.
   3. The pipeline doesn't retry quota (429) errors.
 - **Lesson:** the brief warns that free tiers change. I checked the actual limits on day one rather than trusting the brief's table. 10 TTS requests/day turned caching from nice-to-have into necessary.
+
+## F4: Gemini TTS `interactions.create` returned 404 without `v1beta`
+
+- **Date:** 2026-11-26
+- **Stage:** smoke test (`pipeline/smoke_test.py`)
+- **What broke:** Calling `client.interactions.create(model="gemini-3.8-flash-lite-tts", ...)` with a default `genai.Client(api_key=...)` raised `NotFoundError: Error code: 404` stating the model is not found unless `api_version` is set to `'v1beta'`. Probing `gemini-2.5-flash-preview-tts` on `v1beta` also returned `BadRequestError: Error code: 400 - Speech annotations are not supported for model 'gemini-2.5-flash-preview-tts'`.
+- **What I tried:**
+  1. Checked `https://ai.google.dev/gemini-api/docs/speech-generation` and listed available models on the API key across `v1beta` and `v1alpha`.
+  2. Confirmed `gemini-3.8-flash-lite-tts` and `gemini-2.5-flash-preview-tts` are both present on `v1beta`, and that the speech generation docs initialize `genai.Client(http_options={"api_version": "v1beta"})`.
+- **What fixed it:** Passing `http_options={"api_version": "v1beta"}` to `genai.Client(...)` in `pipeline/smoke_test.py` fixed `gemini-3.8-flash-lite-tts` (`outputs/narration/smoke_gemini.wav`, 24 kHz mono 16-bit WAV, 2.82 s). `gemini-2.5-flash-preview-tts` does not support `speech_metadata` annotations via `interactions.create` and remains excluded from primary TTS use.
+- **Lesson:** Gemini TTS via `client.interactions.create` requires `http_options={"api_version": "v1beta"}` on `genai.Client` in `google-genai>=2.25.0`.
