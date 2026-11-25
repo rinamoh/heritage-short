@@ -1,6 +1,8 @@
 """Smoke test making one live call per provider and logging results to runs.jsonl."""
 
+import argparse
 import base64
+from collections.abc import Sequence
 from dataclasses import dataclass
 import io
 from pathlib import Path
@@ -383,54 +385,86 @@ def test_cloudflare_flux(account_id: str, api_token: str, out_path: Path) -> Smo
         return SmokeResult(name=name, passed=False, optional=False, detail=err, latency_s=latency)
 
 
-def run_smoke_tests() -> list[SmokeResult]:
-    """Execute all five provider smoke checks safely and return their results."""
+PROVIDER_CHOICES: tuple[str, ...] = (
+    "gemini_text",
+    "gemini_tts",
+    "gemini_tts_probe",
+    "addis",
+    "cloudflare",
+)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the command-line argument parser for selecting smoke checks."""
+    parser = argparse.ArgumentParser(
+        description="Run one live smoke check per provider (or a single provider via --only).",
+    )
+    parser.add_argument(
+        "--only",
+        choices=PROVIDER_CHOICES,
+        default=None,
+        help="Run only the specified provider check.",
+    )
+    return parser
+
+
+def run_smoke_tests(only: str | None = None) -> list[SmokeResult]:
+    """Execute all (or one selected) provider smoke checks safely and return results."""
     settings = config.load_settings()
     narration_dir = config.stage_output_dir("narration")
     keyframes_dir = config.stage_output_dir("keyframes")
+    selected = {only} if only is not None else set(PROVIDER_CHOICES)
 
     results: list[SmokeResult] = []
-    results.append(test_gemini_text(settings.gemini_api_key))
+    if "gemini_text" in selected:
+        results.append(test_gemini_text(settings.gemini_api_key))
 
     tts_primary_end: float | None = None
-    res_tts_primary = test_gemini_tts(
-        api_key=settings.gemini_api_key,
-        model=GEMINI_TTS_PRIMARY_MODEL,
-        shot_id="smoke_gemini",
-        out_path=narration_dir / "smoke_gemini.wav",
-        optional=False,
-    )
-    results.append(res_tts_primary)
-    tts_primary_end = time.monotonic()
-
-    results.append(test_addis_tts(settings.addis_api_key, narration_dir / "smoke_addis.wav"))
-    results.append(
-        test_cloudflare_flux(
-            account_id=settings.cloudflare_account_id,
-            api_token=settings.cloudflare_api_token,
-            out_path=keyframes_dir / "smoke.png",
+    if "gemini_tts" in selected:
+        results.append(
+            test_gemini_tts(
+                api_key=settings.gemini_api_key,
+                model=GEMINI_TTS_PRIMARY_MODEL,
+                shot_id="smoke_gemini",
+                out_path=narration_dir / "smoke_gemini.wav",
+                optional=False,
+            )
         )
-    )
+        tts_primary_end = time.monotonic()
 
-    elapsed_since_tts = time.monotonic() - tts_primary_end
-    if elapsed_since_tts < TTS_COOLDOWN_SECONDS:
-        time.sleep(TTS_COOLDOWN_SECONDS - elapsed_since_tts)
+    if "addis" in selected:
+        results.append(test_addis_tts(settings.addis_api_key, narration_dir / "smoke_addis.wav"))
 
-    results.append(
-        test_gemini_tts(
-            api_key=settings.gemini_api_key,
-            model=GEMINI_TTS_PROBE_MODEL,
-            shot_id="smoke_gemini_25_probe",
-            out_path=narration_dir / "smoke_gemini_25_probe.wav",
-            optional=True,
+    if "cloudflare" in selected:
+        results.append(
+            test_cloudflare_flux(
+                account_id=settings.cloudflare_account_id,
+                api_token=settings.cloudflare_api_token,
+                out_path=keyframes_dir / "smoke.png",
+            )
         )
-    )
+
+    if "gemini_tts_probe" in selected:
+        if tts_primary_end is not None:
+            elapsed_since_tts = time.monotonic() - tts_primary_end
+            if elapsed_since_tts < TTS_COOLDOWN_SECONDS:
+                time.sleep(TTS_COOLDOWN_SECONDS - elapsed_since_tts)
+        results.append(
+            test_gemini_tts(
+                api_key=settings.gemini_api_key,
+                model=GEMINI_TTS_PROBE_MODEL,
+                shot_id="smoke_gemini_25_probe",
+                out_path=narration_dir / "smoke_gemini_25_probe.wav",
+                optional=True,
+            )
+        )
     return results
 
 
-def main() -> int:
-    """Run all provider smoke checks, print PASS/FAIL per provider, and exit cleanly."""
-    results = run_smoke_tests()
+def main(argv: Sequence[str] | None = None) -> int:
+    """Parse CLI options, run provider smoke checks, print PASS/FAIL, and exit cleanly."""
+    args = build_parser().parse_args(list(argv) if argv is not None else None)
+    results = run_smoke_tests(only=args.only)
     required_failures = 0
     for res in results:
         tag = "PASS" if res.passed else "FAIL"

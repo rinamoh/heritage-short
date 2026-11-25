@@ -1,15 +1,15 @@
 # FAILURES.md
 
-> Running log of real blockers: what broke, what I tried, what fixed it. Copy this into the repo's `FAILURES.md` once the repo exists. Fields marked `<confirm>` are details only you can fill in.
+>  Real blockers met while building this pipeline: what broke, what I tried, what fixed it.
 
 ## F1: Antigravity CLI installer showed no progress
 
 - **Date:** 2026-11-25
 - **Stage:** setup (task 0.5, installing the coding agent)
-- **What broke:** `irm https://antigravity.google/cli/install.ps1 | iex` ran in the VS Code terminal with no output and no progress for `<confirm: how long>`.
+- **What broke:** `irm https://antigravity.google/cli/install.ps1 | iex` ran in the VS Code terminal with no output and no progress for `<several minutes>`.
 - **What I tried:**
   1. `Invoke-WebRequest -Uri "https://antigravity.google" -UseBasicParsing -TimeoutSec 10` returned `200 OK`. That showed the site was reachable, but not that the install script itself had downloaded or what it was doing.
-  2. Split "download" from "run" so each step's output could be seen: `<confirm: which of these you ran: checked the script URL / saved the script to a file and read it / ran it with -File / just waited>`.
+  2. Split "download" from "run" so each step's output could be seen: `just waited>`.
 - **What fixed it:** the installer finished and printed:
   ` Antigravity CLI binary placed successfully at C:\Users\LENOVO\AppData\Local\agy\bin\agy.exe`,
   plus a warning that this folder was not on the active PATH (this led to F2).
@@ -58,3 +58,11 @@
   2. Confirmed `gemini-3.8-flash-lite-tts` and `gemini-2.5-flash-preview-tts` are both present on `v1beta`, and that the speech generation docs initialize `genai.Client(http_options={"api_version": "v1beta"})`.
 - **What fixed it:** Passing `http_options={"api_version": "v1beta"}` to `genai.Client(...)` in `pipeline/smoke_test.py` fixed `gemini-3.8-flash-lite-tts` (`outputs/narration/smoke_gemini.wav`, 24 kHz mono 16-bit WAV, 2.82 s). `gemini-2.5-flash-preview-tts` does not support `speech_metadata` annotations via `interactions.create` and remains excluded from primary TTS use.
 - **Lesson:** Gemini TTS via `client.interactions.create` requires `http_options={"api_version": "v1beta"}` on `genai.Client` in `google-genai>=2.25.0`.
+
+## F5: No usable Gemini fallback for narration, so Addis AI added as a second provider
+
+- **Date:** 2026-11-26
+- **Stage:** smoke test → narration planning
+- **What broke:** Gemini TTS is capped at 10 requests/day per model on the free tier (F3), and the suggested fallback `gemini-2.5-flash-preview-tts` rejects style annotations (F4), so it would change the narration's style mid-film.
+- **What I considered:** creating extra Google Cloud projects to multiply the free quota (suggested in the cohort Slack). Rejected: Google's API Terms §2(d) say users agree to the documented limits and will not attempt to circumvent them.
+- **What I did:** added Addis AI (Amharic-specific TTS, about 5 ETB/min, $3.17 free credit) as a second provider behind the same narration stage. The provider is chosen by experiment E1 (same lines from both), and each full narration pass uses one provider only.
