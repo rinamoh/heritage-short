@@ -14,11 +14,11 @@ An 88-second vertical film made with open and free-tier AI models: Amharic narra
 python run.py
 ```
 
-This validates `storyboard.json`, then runs keyframes, narration, music, shots and film, and writes `outputs/final/film_9x16.mp4` and `outputs/final/film_16x9.mp4`. Anything already generated is read from the cache, so on this repository it makes **no model calls** and only rebuilds the video clips and the final edit with FFmpeg (a few minutes).
+This validates `storyboard.json`, then runs keyframes, narration, music, shots and film, and writes `outputs/final/film_9x16.mp4` and `outputs/final/film_16x9.mp4`. Anything already generated is read from the cache, so on this repository it makes **no model calls** and only rebuilds the video clips and the final edit with FFmpeg. Verified on 26 Nov in a fresh clone with no `.env`: 0 planned Gemini calls, both films written at 87.88 s, −14.0 LUFS. Installed versions in that test: google-genai 3.6.1, Pillow 13.0.0, addisai 0.14.0.
 
 ### Set-up (first time only)
 
-1. **Python 3.10 or newer** and **FFmpeg** (with `ffprobe`) on your PATH. Check with `python --version` and `ffmpeg -version`.
+1. **Python 3.10 or newer** (tested on 3.14, Windows) and **FFmpeg** (with `ffprobe`) on your PATH. Check with `python --version` and `ffmpeg -version`.
 2. Create and activate a virtual environment, then install: `python -m venv .venv`, `.venv\Scripts\Activate.ps1` (Windows) or `source .venv/bin/activate`, then `pip install -r requirements.txt`.
 3. Create a file named `.env` in the repository root. It is only needed if you want to regenerate something (an empty cache); the cached run needs no keys:
 
