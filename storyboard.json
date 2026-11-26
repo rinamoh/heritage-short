@@ -41,7 +41,7 @@
     "caption": "gentle Ethiopian-inspired instrumental, soft plucked krar-like strings, warm pad, sparse, nostalgic, slow build, motif returns at the end, no vocals",
     "bpm": 72,
     "key": "D minor",
-    "duration_s": 73.375,
+    "duration_s": 87.875,
     "instrumental": true,
     "seeds": [
       11,
@@ -52,7 +52,7 @@
       {
         "id": "1",
         "in_s": 0.0,
-        "out_s": 21.583,
+        "out_s": 24.708,
         "shots": [
           "s01",
           "s02",
@@ -62,8 +62,8 @@
       },
       {
         "id": "2",
-        "in_s": 21.583,
-        "out_s": 31.542,
+        "in_s": 24.708,
+        "out_s": 34.917,
         "shots": [
           "s04",
           "s05"
@@ -72,8 +72,8 @@
       },
       {
         "id": "3",
-        "in_s": 31.542,
-        "out_s": 51.958,
+        "in_s": 34.917,
+        "out_s": 61.542,
         "shots": [
           "s06",
           "s07",
@@ -83,8 +83,8 @@
       },
       {
         "id": "4",
-        "in_s": 51.958,
-        "out_s": 70.375,
+        "in_s": 61.542,
+        "out_s": 84.875,
         "shots": [
           "s09",
           "s10"
@@ -93,8 +93,8 @@
       },
       {
         "id": "end",
-        "in_s": 70.375,
-        "out_s": 73.375,
+        "in_s": 84.875,
+        "out_s": 87.875,
         "shots": [
           "end"
         ],
@@ -172,7 +172,7 @@
       "reason": "The heart of the film: longest, quietest hold",
       "shot_size": "Medium, from behind",
       "look": "L1",
-      "hold_after_s": 3.0,
+      "hold_after_s": 1.5,
       "narration": {
         "segments": [
           {
@@ -233,7 +233,7 @@
       "reason": "Planned silence: the cost of leaving",
       "shot_size": "Close-up",
       "look": null,
-      "duration_s": 5,
+      "duration_s": 3.0,
       "narration": {
         "segments": []
       },
@@ -379,7 +379,7 @@
       "reason": "Motif closes the loop; theme peaks",
       "shot_size": "Wide, slow pull-back",
       "look": null,
-      "hold_after_s": 2.5,
+      "hold_after_s": 1.5,
       "narration": {
         "segments": [
           {

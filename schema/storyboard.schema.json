@@ -262,7 +262,7 @@
           "hold_after_s": {
             "type": "number",
             "minimum": 0,
-            "default": 1.2
+            "default": 0.6
           },
           "narration": {
             "type": "object",

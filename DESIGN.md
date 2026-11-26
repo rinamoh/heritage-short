@@ -17,7 +17,7 @@
   - The family calls her **Emaye**.
 - **Family saying chosen for the ending:** **"የተማረ ወድቆ አይወድቅም"** (*yetemare wedko aywedkm*), roughly "an educated person may fall, but never falls for good".
 - **What the story means to me:** one person's decision to take the leap alone is the reason her whole family is educated. She took the first step, then raised children who passed the same value on.
-- **Insight that shaped the film:** the story isn't about her whole life; it's about **one decision**: leaving at 16. Everything after it (the city, school, children) is shown as a consequence of that moment, which is why s03 is the longest and quietest shot.
+- **Insight that shaped the film:** the story isn't about her whole life; it's about **one decision**: leaving at 16. Everything after it (the city, school, children) is shown as a consequence of that moment, which is why s03 has the longest pause after its line (shared only with the ending).
 
 ## Define
 - **Problem statement:** Emaye's grandchildren and great-grandchildren grew up educated in Addis without knowing what it cost her to start that. They need to *feel*, not just be told, that their education began with one girl's decision to walk away from everything she knew.
@@ -51,19 +51,19 @@ Constant across all looks: the same woman (same build, skin tone and hair), neve
 - **Logline:** In the 1960s, a sixteen-year-old girl walks alone from a small town in the south to Addis Ababa to keep learning, and lights the lamp her whole family still studies by.
 - **Treatment:** We are only here because of her. In the 1960s, school in her small southern town ended after fifth grade, so at sixteen she wrapped her clothes in a cloth bundle and walked, alone, to Addis Ababa. In a city where she knew no one, she studied at night by a kuraz and was often the only woman in her class. She finished middle school, began high school, and taught her children that learning is worth any road. Every lamp lit in our family today was lit from hers.
 
-## Shot plan (v1, before Test 1)
+## Shot plan (lengths = v2 timeline, after Test 1; narration-driven)
 | # | Beat | Size | What we see (no clear face) | Look | Reason | ~s |
 |---|---|---|---|---|---|---|
-| s01 | Today | Close-up | A modern desk lamp glowing over an open book with blank pages, night | — | Opens on the motif and on "us" | 7 |
-| s02 | Where she came from | Extreme wide | A 1960s southern Ethiopian highland town at dawn: mist, hills, enset plants, round thatched houses | — | Establishing: the world she'll leave | 7 |
-| s03 | **The decision** | Medium, from behind | A girl of 16 at a doorway at dawn, hair in a ponytail, simple village dress, holding a plain faded greyish-black cloth bundle | L1 | The heart of the film: longest, quietest hold | 10 |
-| s04 | Leaving alone | Wide | One small figure walking on a red dirt road between green hills, the bundle in her hand | L1 | Shows "alone" and "on foot" through scale | 7 |
-| s05 | Silence | Close-up | The doorway she left, empty, morning light | — | Planned silence: the cost of leaving | 5 |
-| s06 | Arrival | Extreme wide | 1960s Addis Ababa at dusk, her tiny at the edge of the frame, bundle in hand | L1 | The city is enormous; she knows no one | 7 |
-| s07 | The struggle | Close-up | A lit kuraz on a bare wooden table in a small rented room at night; the cloth bundle in the corner | — | Motif introduced; struggle and study | 8 |
-| s08 | The only woman | Medium, from behind | An empty classroom in morning light: her at one wooden desk in a school uniform, ponytail, school bag, closed books; a map on the wall in soft focus | L2 | "Only woman" without a crowd | 8 |
-| s09 | Passing it on | Medium, from behind | A mother in a dress with a head covering at a family table; a kuraz lit; children's notebooks | L3 | Generations told by light, not faces | 8 |
-| s10 | Return | Wide, slow pull-back | Today's home at night: several lamps lit over study desks, no people's faces | — | Motif closes the loop; theme peaks | 8 |
+| s01 | Today | Close-up | A modern desk lamp glowing over an open book with blank pages, night | — | Opens on the motif and on "us" | 6.0 |
+| s02 | Where she came from | Extreme wide | A 1960s southern Ethiopian highland town at dawn: mist, hills, enset plants, round thatched houses | — | Establishing: the world she'll leave | 8.9 |
+| s03 | **The decision** | Medium, from behind | A girl of 16 at a doorway at dawn, hair in a ponytail, simple village dress, holding a plain faded greyish-black cloth bundle | L1 | The heart of the film: the longest pause after a line (1.5 s, matched only by the ending), so the decision can land | 9.8 |
+| s04 | Leaving alone | Wide | One small figure walking on a red dirt road between green hills, the bundle in her hand | L1 | Shows "alone" and "on foot" through scale | 7.2 |
+| s05 | Silence | Close-up | The doorway she left, empty, morning light | — | Planned silence: the cost of leaving | 3.0 |
+| s06 | Arrival | Extreme wide | 1960s Addis Ababa at dusk, her tiny at the edge of the frame, bundle in hand | L1 | The city is enormous; she knows no one | 8.3 |
+| s07 | The struggle | Close-up | A lit kuraz on a bare wooden table in a small rented room at night; the cloth bundle in the corner | — | Motif introduced; struggle and study | 7.4 |
+| s08 | The only woman | Medium, from behind | An empty classroom in morning light: her at one wooden desk in a school uniform, ponytail, school bag, closed books; a map on the wall in soft focus | L2 | "Only woman" without a crowd | 10.9 |
+| s09 | Passing it on | Medium, from behind | A mother in a dress with a head covering at a family table; a kuraz lit; children's notebooks | L3 | Generations told by light, not faces | 8.1 |
+| s10 | Return | Wide, slow pull-back | Today's home at night: several lamps lit over study desks, no people's faces | — | Motif closes the loop; theme peaks | 15.2 |
 | end | End card | — | "Made with AI" + models | — | Required | 3 |
 
 ## Narration (v2, after Test 1) and subtitles
@@ -88,12 +88,12 @@ Notes:
 - s03: "ወደማታውቀው" (*to* a land she didn't know) is also more grammatical than "የማታውቀው".
 - s07: "ማታ ማታ" was read with a stutter (repeated, then restarted), and "በኩራዝ ታጠና" read as studying *with* a kuraz rather than *helped by* its light. "በየምሽቱ" (every evening) avoids the repeated word; "ታግዛ" (helped by) fixes the meaning.
 - s10: the pause after the saying uses Gemini's inline `<long pause>` tag, so the line stays one call (9 Gemini calls for the whole narration, within the 10/day limit).
-- **Timing rule (v2):** each shot lasts as long as its narration plus a short hold (≈ 1.2 s by default), so the narration flows. Only s05 (planned silence) and the end of s10 hold longer. The total must stay at 60–90 s, end card included.
+- **Timing rule (v2):** each shot = 0.2 s lead-in + its narration + a 0.6 s hold, so the narration flows. Only **s03 (the decision) and s10 (the ending) hold 1.5 s**, and **s05 is 3 s of planned silence**. Total **87.88 s** with the 3 s end card (limit 60–90 s). The radio stage warns if it goes over, so any re-recorded line must be checked for length.
 - Subtitle cues follow the narration segments.
 
 ## Music spotting (v2: cues follow shots; times are computed from the timeline)
 
-The score is **one instrumental track** the length of the film (narration timeline + 3 s end card, ≈ 65–70 s). Cue times are **not typed by hand**: the pipeline calculates each cue's in/out time from the shots it covers, so they can't go stale when shot lengths change.
+The score is **one instrumental track** the length of the film (narration timeline + 3 s end card = **87.88 s**). Cue times are **not typed by hand**: the pipeline calculates each cue's in/out time from the shots it covers, so they can't go stale when shot lengths change.
 
 | Cue | Shots | What the music does | Why |
 |---|---|---|---|
@@ -123,7 +123,7 @@ The score is **one instrumental track** the length of the film (narration timeli
   - **The biggest problem is timing, not words.** The shots were planned before the narration existed (7–10 s each), but the spoken lines are 2.6–6.9 s. The leftover 3–5 s of near-silence in every shot broke the story into pieces. This confirms the brief's advice: the narration should set shot length, not the other way round.
   - The abrupt cuts are a defect to diagnose (TTS output or assembly; see FAILURES F7).
   - Three lines need text changes (s03, s07, s10) and one needs a delivery change (s01).
-- **Changes made:** narration v2 (table above); timing rule changed to narration-driven shot lengths (+ s03 held 3 s, s10 held 2.5 s); a pause before "Thank you, Emaye"; **provider switched to Gemini TTS** with a wistful, falling-tone style instruction (fixes s01's question-like ending, and Addis AI clipped final consonants: F7). Storyboard commit: `<hash>`.
+- **Changes made:** narration v2 (table above); timing rule changed to narration-driven shot lengths (0.2 s lead-in, 0.6 s hold; s03 and s10 held 1.5 s; s05 3 s). After the voice switch the radio cut ran to 97.33 s, so the holds were tightened to reach 87.88 s (F10); a pause before "Thank you, Emaye"; **provider switched to Gemini TTS** with a wistful, falling-tone style instruction (fixes s01's question-like ending, and Addis AI clipped final consonants: F7). Storyboard commit: `<hash>`.
 
 ## Test 2: near-final cut
 `<same fields>`

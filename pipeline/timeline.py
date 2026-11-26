@@ -10,8 +10,8 @@ from typing import Any
 from pipeline.common import cache
 from pipeline.narration import build_segment_key, resolve_voice_config, segment_texts
 
-NARRATION_LEAD_S: float = 0.3
-DEFAULT_HOLD_AFTER_S: float = 1.2
+NARRATION_LEAD_S: float = 0.2
+DEFAULT_HOLD_AFTER_S: float = 0.6
 DEFAULT_MIN_SHOT_S: float = 3.0
 
 # Used only for planning before a line has been recorded.

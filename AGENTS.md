@@ -28,8 +28,9 @@ Developer machine: Windows, PowerShell. Use pathlib for every path. No bash-only
   Every person prompt must include "seen from behind, face not visible".
 
 ## Rules
-0. Timing: narration drives the film. A shot lasts its narration length (all segments + pauses) + hold_after_s
-   (default 1.2 s); silent shots use duration_s. Never trim or fade narration audio before its true end;
+0. Timing: narration drives the film. A shot lasts 0.2 s lead-in + its narration (all segments + pauses) + hold_after_s
+   (default 0.6 s; s03 and s10 1.5 s); silent shots use duration_s (s05 = 3 s). The total incl. the 3 s end card
+   must stay within 60–90 s (currently 87.88 s); re-check after any narration change. Never trim or fade narration audio before its true end;
    fades on narration are ≤ 30 ms, only to avoid clicks.
 1. Every model call goes through log.log_call() → one JSON line in runs.jsonl:
    ts (UTC ISO), stage, shot_id, provider, model, params, seed, latency_s,

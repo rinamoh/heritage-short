@@ -1,69 +1,105 @@
 {
-  "provider": "addis",
-  "total_duration_s": 41.4,
+  "provider": "gemini",
+  "total_duration_s": 72.65,
   "shots": {
     "s01": {
-      "file": "s01_c0fd4ab97e2d.wav",
-      "duration_s": 2.61,
-      "storyboard_duration_s": 7,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s01_4f476b4eaae3.wav",
+          "duration_s": 5.16,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s02": {
-      "file": "s02_1d16ef497930.wav",
-      "duration_s": 5.16,
-      "storyboard_duration_s": 7,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s02_2cc93dfba3b8.wav",
+          "duration_s": 8.08,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s03": {
-      "file": "s03_0d7d4e164d17.wav",
-      "duration_s": 4.94,
-      "storyboard_duration_s": 10,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s03_acaae88c0d31.wav",
+          "duration_s": 8.07,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s04": {
-      "file": "s04_85ac13c5762d.wav",
-      "duration_s": 3.02,
-      "storyboard_duration_s": 7,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s04_91d6c2821030.wav",
+          "duration_s": 6.4,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s06": {
-      "file": "s06_eb87e7065049.wav",
-      "duration_s": 3.92,
-      "storyboard_duration_s": 7,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s06_813c3d7219b6.wav",
+          "duration_s": 7.48,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s07": {
-      "file": "s07_140f6efa913e.wav",
-      "duration_s": 3.94,
-      "storyboard_duration_s": 8,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s07_bac0ed08dd8b.wav",
+          "duration_s": 6.6,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s08": {
-      "file": "s08_04faa4ef4464.wav",
-      "duration_s": 6.61,
-      "storyboard_duration_s": 8,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s08_c26ffbc69208.wav",
+          "duration_s": 10.08,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s09": {
-      "file": "s09_96fe358144d3.wav",
-      "duration_s": 4.28,
-      "storyboard_duration_s": 8,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s09_07f7b51c30b4.wav",
+          "duration_s": 7.29,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     },
     "s10": {
-      "file": "s10_c10e239c2bd1.wav",
-      "duration_s": 6.92,
-      "storyboard_duration_s": 8,
-      "provider": "addis",
-      "cache_hit": false
+      "segments": [
+        {
+          "file": "s10_8253d5175891.wav",
+          "duration_s": 13.49,
+          "clipped_end": false,
+          "provider": "gemini",
+          "cache_hit": false
+        }
+      ]
     }
   }
 }
