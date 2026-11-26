@@ -10,7 +10,7 @@ import jsonschema
 
 from pipeline.common import config
 
-STAGES: tuple[str, ...] = ("keyframes", "narration", "shots", "assemble")
+STAGES: tuple[str, ...] = ("keyframes", "narration", "shots", "assemble", "radio")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -92,6 +92,11 @@ def main(argv: Sequence[str] | None = None) -> int:
 
         shot_ids = narration.parse_shots_arg(args.shots)
         narration.run_narration(shot_ids=shot_ids, provider_override=args.provider)
+    elif args.stage == "radio":
+        from pipeline import assemble
+
+        if assemble.run_radio() is None:
+            return 1
     elif args.stage:
         print(f"Stage '{args.stage}' is not implemented yet; validation completed.")
 
