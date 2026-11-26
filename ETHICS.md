@@ -19,7 +19,8 @@
 | Evidence | Screenshots of both messages and the replies, kept privately by me. They're **not committed**, because they show phone numbers and family names. Available to the programme on request. |
 
 ### Reconfirmation of the final narration (promised in Request 2)
-- Final narration (Amharic + English subtitles) sent to the family group on: *pending, task 5.5*. Reply: *pending*.
+- **2026-11-26, near-final film sent to the family group** (Amharic narration, English subtitles, score, end card). Four family members replied, all positive. I also asked three follow-up questions; the answers were **no, no and none**, so **no objection** was raised to the film, the AI figure, the narration or the plan to post publicly.
+- **Before posting:** the s04 and s06 narration will be re-recorded (DESIGN.md, Test 2). The corrected film is sent to the same group before it goes public, as I promised in Request 2. Sent on: `<date, after the re-record>`. Reply: `<reply>`.
 
 ### Facts used in the film, and where they came from
 All biographical facts in the narration were confirmed by the family elders on 2026-11-25:
@@ -43,13 +44,14 @@ The town is deliberately not named.
 | Component | Model / tool | Licence / terms | Notes |
 |---|---|---|---|
 | Keyframes | FLUX.2 [klein] **4B** on Cloudflare Workers AI | Apache 2.0 (model); Cloudflare terms (service) | 4B chosen deliberately: the 9B variant is non-commercial |
-| Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 | Wan claims no rights over generated content; responsibility for use is mine |
+| Moving shots | **FFmpeg Ken Burns** (slow pan and zoom over the keyframes). Wan 2.2 TI2V-5B is *not used* in the film | Wan 2.2: Apache 2.0 (per the challenge brief). FFmpeg: see Assembly row | Listed so the table stays accurate if a Wan clip is added later. The brief names Ken Burns as an accepted fallback |
 | Score | ACE-Step 1.5 | MIT | The brief states outputs may be used commercially. I couldn't confirm the training-data statement on the model pages I read; I'm relying on the brief for it. |
-| Score: where it ran | **Google Colab** (free tier, T4 GPU), 2026-11-26. The Kaggle notebook never left its queue (FAILURES F11) and produced nothing. | Google Colab terms of service `<add the link you read>` | Only the generic music prompt (caption, BPM, key, duration) was sent. No personal data, no family details. |
+| Score: where it ran | **Google Colab** (free tier, T4 GPU), 2026-11-26. The Kaggle notebook never left its queue (FAILURES F11) and produced nothing. | Google Colab Additional Terms of Service (https://colab.research.google.com/terms, last modified 14 May 2024 per the page) and Google's Terms of Service | Only the generic music prompt (caption, BPM, key, duration) was sent. No personal data, no family details. |
 | Narration (film) | **Gemini 3.8 Flash TTS**, voice `Kore` | Gemini API terms: https://ai.google.dev/gemini-api/terms. Google doesn't claim ownership of generated content | Free tier; see §4 on data use |
-| Narration (v1, not in the film) | Addis AI TTS, voice `am-hamen` | Addis AI Terms: check at addisassistant.com if Addis audio is used later | Used for v1 / Test 1 only, ~3.45 ETB |
-| Subtitles / translation | Gemini 3.8 Flash | Gemini API terms | |
+| Narration (v1, not in the film) | Addis AI TTS, voice `am-hamen` | Addis AI terms: **not found** by a web search on 2026-11-26 and not yet read. Read them at addisassistant.com and fill in before any Addis audio is shown publicly | Used for v1 / Test 1 only (3.45 ETB, runs.jsonl lines 10–18). Addis audio will also be played to listeners in the blind test (EXPERIMENTS ceiling entry), not published |
+| Subtitles | English text I wrote in `storyboard.json` (`subtitle_en`) with the help of the Claude chat assistant; burned in by FFmpeg. **No translation model call** is made by the pipeline (the only Gemini text call in `runs.jsonl` is the day-one smoke test). | n/a | The Amharic lines and their English meaning were checked by me |
 | Assembly | FFmpeg | LGPL/GPL (tool); no claim on output | |
+| Planning and drafting assistant | Claude (claude.ai chat, project "AI Engineering") | Anthropic terms | Used for the plan, the storyboard text, DESIGN/ETHICS/FAILURES/ARCHITECTURE drafts and log review. |
 | Coding agent | Antigravity CLI (until its weekly quota ran out, F6), then Claude Code (Sonnet 5.5) in VS Code | Google terms; Anthropic terms | Switch recorded in FAILURES F6 |
 
 ## 3. Labelling plan

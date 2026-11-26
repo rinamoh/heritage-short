@@ -1,6 +1,5 @@
 # FAILURES.md
 
-> Running log of real blockers: what broke, what I tried, what fixed it. Copy this into the repo's `FAILURES.md` once the repo exists. Fields marked `<confirm>` are details only you can fill in.
 
 ## F1: Antigravity CLI installer showed no progress
 
@@ -131,6 +130,16 @@
 - **Stage:** music (Block 3A, step 3.C4–3.C5), Google Colab
 - **What broke:** Connect hung for several minutes, then Colab showed: "Failed to assign a backend. No backend with GPU available. Would you like to use a runtime with no accelerator?"
 - **What it means:** free-tier GPUs on Colab aren't guaranteed. At that moment none was free for my account. It isn't a fault in the notebook.
-- **What I tried:** did **not** accept the no-accelerator (CPU) runtime: ACE-Step's language model plus diffusion model is built for a T4, and 3 tracks of 88 s on a CPU wasn't realistic in the time left. So i  disconnected and deleted the runtime / reloaded the page / tried an Incognito window with one account / waited 10 min and retried>
-- **What fixed it:** I used my other account and then it worked for me it took around 11 minutes. After that the first cell printed the GPU name < Tesla T4>`.
+- **What I tried:** did **not** accept the no-accelerator (CPU) runtime: ACE-Step's language model plus diffusion model is built for a T4, and 3 tracks of 88 s on a CPU wasn't realistic in the time left. `<confirm: what you actually did, in order, e.g. disconnected and deleted the runtime / reloaded the page / tried an Incognito window with one account / waited N min and retried>`.
+- **What fixed it:** `<confirm: what finally got a GPU, and how long it took>`. After that the first cell printed the GPU name (`<confirm: Tesla T4>`).
 - **Lesson:** a free GPU is a queue by another name. Keep two GPU providers (Kaggle and Colab) and a time limit after which you stop retrying.
+
+## F13: Gemini TTS daily quota was spent after the reset, leaving one request for Test 2
+
+- **Date:** 2026-11-26
+- **Stage:** narration, Test 2 change (s04 and s06 sound like a foreigner speaking Amharic)
+- **What broke:** the plan assumed a fresh 10-request TTS quota "on Thursday after the reset" for re-recording. The full 9-line narration pass had already been run on Thursday itself: `runs.jsonl` shows nine Flash TTS calls (s01, s02, s03, s04, s06, s07, s08, s09, s10) between **08:44:51 and 08:47:40 UTC**. Google's rate-limit documentation says daily request quotas reset at **midnight Pacific time**, which is 08:00 UTC in late November (UTC−8). The calls are therefore on today's quota, and **at most one Flash TTS request remains** until 08:00 UTC on 27 November (11:00 EAT), after the 23:59 EAT deadline. Two lines (s04, s06) need re-recording.
+- **What I checked:** counted today's Gemini TTS calls in `runs.jsonl` (command in COSTS.md); read the quota-reset statement in the Gemini API rate-limits page.
+- **What I did:** option (b) as a test, then (c). I generated s04 and s06 on `gemini-3.8-flash-lite-tts`, which has its own 10-a-day quota, with the same text, voice and style. I judged the s04 audio much better, but both clips were about 3 s long, shorter than the film's Flash lines. Using them would have shortened both shots, moved the music cues against the picture, and needed a per-shot model setting in the pipeline (the film reads one model for all lines). The Flash quota still had one request, but with the deadline near I stopped and **kept the original Flash narration**, documenting the accent on s04 and s06 as a known weakness (DESIGN.md, Test 2). I did not check whether the Lite clips were complete or why they were shorter.
+- **What I did not do:** a second API key or project to multiply the quota. Google's API terms forbid attempting to circumvent the documented limits (see the plan's decision table), and the code would sit in the repository that is graded.
+- **Lesson:** a daily quota has a reset time, so a plan that says "tomorrow" needs the reset in the plan's own timezone. I recorded the reset time only after spending the day's calls.

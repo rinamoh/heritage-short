@@ -110,8 +110,8 @@ The score is **one instrumental track** the length of the film (narration timeli
 
 ## Test 1: radio cut
 
-- **Date / medium:** 2026-11-26, shown to family in person / on the family group `<confirm>`.
-- **Who (≥ 3):** `<fill in: e.g. father, aunt, cousin>`.
+- **Date / medium:** 2026-11-26, the radio cut (Addis AI narration, placeholder pad) shown to family `<confirm: in person or on the family group>`.
+- **Who (≥ 3):** `<fill in: the roles of at least three listeners, e.g. aunt, cousin, uncle>`.
 - **What they said:**
   1. **s01** sounds like a question: the end rises as if more is coming. It should be **wistful and contemplative**, and land as a statement.
   2. A **long silence after the first line**, and an **unsettling silence after each sentence**, as if the story stops where it shouldn't.
@@ -126,4 +126,19 @@ The score is **one instrumental track** the length of the film (narration timeli
 - **Changes made:** narration v2 (table above); timing rule changed to narration-driven shot lengths (0.2 s lead-in, 0.6 s hold; s03 and s10 held 1.5 s; s05 3 s). After the voice switch the radio cut ran to 97.33 s, so the holds were tightened to reach 87.88 s (F10); a pause before "Thank you, Emaye"; **provider switched to Gemini TTS** with a wistful, falling-tone style instruction (fixes s01's question-like ending, and Addis AI clipped final consonants: F7). Storyboard commit: `<hash>`.
 
 ## Test 2: near-final cut
-`<same fields>`
+
+- **Date / medium:** 2026-11-26. The near-final vertical film (87.88 s: Gemini narration, the chosen ACE-Step score, burned-in English subtitles, AI end card, Ken Burns moves over the ten keyframes) was sent to the family WhatsApp group. I had already watched both aspect ratios on my phone with sound.
+- **Who (5 listeners):** four members of the family group replied (one is a child of Emaye: reply 2 says "my mother"); a fifth listener, a friend, watched it separately and gave the narration feedback below. The brief asks for at least three people from the audience: the four family replies meet that.
+- **What the family said** (their words, spelling corrected, names removed):
+  1. "It reminded me so much of her, from the settings to the clothes and the environment as well. You took me back to my childhood."
+  2. "This feels like a tribute to my mother, and it is very well done. Let me know when you post it; I want to share it with friends."
+  3. "I loved it."
+  4. "This is amazing. Thank you for being so thoughtful. It made me remember and understand what big sacrifices she made for us."
+- **Follow-up questions:** I asked the group three further questions (`<paste the three questions you sent>`). The answers were **no, no and none**.
+- **What the friend said:** the narration of **s04** ("she left everything she knew, and walked. Alone.") **sounds like a foreigner speaking Amharic**, and the same stiffness continues through the start of **s06** ("Addis Ababa was enormous"). The next sentence of s06 ("and she knew no one") sounds natural again.
+- **Insights:**
+  - **The family's replies were about recognition and feeling**: the clothes, the setting, her sacrifice. None mentioned the pace, the music, the missing face or the length. So the looks, the kuraz motif, the never-a-clear-face rule and the timing were **left unchanged**.
+  - **The one defect came from a listener who was listening to the voice itself**, not from the group. It is narrow: the delivery of three segments (s04's two sentences and the first sentence of s06), not the text of the film as a whole.
+  - This is the same kind of problem Test 1 found (narration delivery, not story), and the brief warns that a native listener catches pronunciation a developer cannot.
+- **What did not change, and why:** pictures, score, subtitles, timing and story. No listener raised a problem with them.
+- **Change made (Test 2): none to the film; documented as a known weakness.** The friend's feedback is one listener's opinion, and the fix was limited by quota (FAILURES F13). I tried two things for s04 and s06 on `gemini-3.8-flash-lite-tts` (same text, voice Kore and style as the film's Flash audio; EXPERIMENTS E7). I judged the Lite audio better, but the clips came out about 3 s long, which would have shortened both shots and moved the music against the picture. Using them also needed a per-shot model setting in the pipeline, and the film uses one model throughout. With the deadline close I **kept the original Flash narration**. **Known weakness:** s04 and the first sentence of s06 can sound like a non-native speaker to a native ear (one listener reported it; the four family replies did not mention it). Commit for this decision: `<hash>`.
