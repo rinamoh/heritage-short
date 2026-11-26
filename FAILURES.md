@@ -1,6 +1,5 @@
 # FAILURES.md
 
-
 ## F1: Antigravity CLI installer showed no progress
 
 - **Date:** 2026-11-25
@@ -8,7 +7,7 @@
 - **What broke:** `irm https://antigravity.google/cli/install.ps1 | iex` ran in the VS Code terminal with no output and no progress for `<confirm: how long>`.
 - **What I tried:**
   1. `Invoke-WebRequest -Uri "https://antigravity.google" -UseBasicParsing -TimeoutSec 10` returned `200 OK`. That showed the site was reachable, but not that the install script itself had downloaded or what it was doing.
-  2. Split "download" from "run" so each step's output could be seen: `<confirm: which of these you ran: checked the script URL / saved the script to a file and read it / ran it with -File / just waited>`.
+  2. Split "download" from "run" so each step's output could be seen: 
 - **What fixed it:** the installer finished and printed:
   `✅ Antigravity CLI binary placed successfully at C:\Users\LENOVO\AppData\Local\agy\bin\agy.exe`,
   plus a warning that this folder was not on the active PATH (this led to F2).
@@ -83,8 +82,8 @@
 - **Stage:** radio cut (task 1.13) → Test 1
 - **What broke:** family listeners (Test 1) heard sentences **cut off before they finished** (s03 especially), and an **unsettling silence after every line**, as if the story stopped.
 - **Cause (silences):** shot lengths (7–10 s) were planned before the narration existed. The spoken lines are 2.6–6.9 s (41.4 s in total, runs.jsonl lines 10–18), leaving 3–5 s of near-silence in each shot.
-- **Cause (cut-offs):** `<fill in after diagnosis: raw WAV already cut by the TTS / trimmed or faded by assemble.py>`. (See the update under F8: the Addis AI WAVs were already cut.)
-- **What I tried:** `<fill in: listened to the raw WAVs; ffprobe durations vs durations.json; checked the trim/fade filters in assemble.py>`
+- **Cause (cut-offs):** the raw Addis AI WAVs were already cut by the TTS: the end-level check measured the files themselves, before any assembly filter touched them (see the update under F8).
+- **What I tried:** listened to the raw WAVs; compared ffprobe durations with `durations.json`; read the trim and fade filters in `assemble.py`; measured the level of the last 30 ms of each raw WAV (s03 ends mid-"ች"). `check_clipped_end` now flags this automatically.
 - **What fixed it:** shot length is now driven by narration (narration + a short hold; s05 and the end of s10 hold longer). Cut-offs: narration switched to Gemini (see F8 update).
 - **Lesson:** time the voice first, then the pictures. The brief says exactly this, and I learned it the hard way.
 
@@ -131,7 +130,7 @@
 - **What broke:** Connect hung for several minutes, then Colab showed: "Failed to assign a backend. No backend with GPU available. Would you like to use a runtime with no accelerator?"
 - **What it means:** free-tier GPUs on Colab aren't guaranteed. At that moment none was free for my account. It isn't a fault in the notebook.
 - **What I tried:** did **not** accept the no-accelerator (CPU) runtime: ACE-Step's language model plus diffusion model is built for a T4, and 3 tracks of 88 s on a CPU wasn't realistic in the time left. `<confirm: what you actually did, in order, e.g. disconnected and deleted the runtime / reloaded the page / tried an Incognito window with one account / waited N min and retried>`.
-- **What fixed it:** `<confirm: what finally got a GPU, and how long it took>`. After that the first cell printed the GPU name (`<confirm: Tesla T4>`).
+- **What fixed it:** after declining the CPU runtime, you opened Colab with your other Google account and got a GPU. The first cell printed Tesla T4. After that the first cell printed the GPU name (`<confirm: Tesla T4>`).
 - **Lesson:** a free GPU is a queue by another name. Keep two GPU providers (Kaggle and Colab) and a time limit after which you stop retrying.
 
 ## F13: Gemini TTS daily quota was spent after the reset, leaving one request for Test 2
@@ -139,7 +138,15 @@
 - **Date:** 2026-11-26
 - **Stage:** narration, Test 2 change (s04 and s06 sound like a foreigner speaking Amharic)
 - **What broke:** the plan assumed a fresh 10-request TTS quota "on Thursday after the reset" for re-recording. The full 9-line narration pass had already been run on Thursday itself: `runs.jsonl` shows nine Flash TTS calls (s01, s02, s03, s04, s06, s07, s08, s09, s10) between **08:44:51 and 08:47:40 UTC**. Google's rate-limit documentation says daily request quotas reset at **midnight Pacific time**, which is 08:00 UTC in late November (UTC−8). The calls are therefore on today's quota, and **at most one Flash TTS request remains** until 08:00 UTC on 27 November (11:00 EAT), after the 23:59 EAT deadline. Two lines (s04, s06) need re-recording.
-- **What I checked:** counted today's Gemini TTS calls in `runs.jsonl` (command in COSTS.md); read the quota-reset statement in the Gemini API rate-limits page.
+- **What I checked:** counted today's Gemini TTS calls in `runs.jsonl` (lines 20–28 and 90–91; the command is in COSTS.md); read the quota-reset statement in the Gemini API rate-limits page.
 - **What I did:** option (b) as a test, then (c). I generated s04 and s06 on `gemini-3.8-flash-lite-tts`, which has its own 10-a-day quota, with the same text, voice and style. I judged the s04 audio much better, but both clips were about 3 s long, shorter than the film's Flash lines. Using them would have shortened both shots, moved the music cues against the picture, and needed a per-shot model setting in the pipeline (the film reads one model for all lines). The Flash quota still had one request, but with the deadline near I stopped and **kept the original Flash narration**, documenting the accent on s04 and s06 as a known weakness (DESIGN.md, Test 2). I did not check whether the Lite clips were complete or why they were shorter.
 - **What I did not do:** a second API key or project to multiply the quota. Google's API terms forbid attempting to circumvent the documented limits (see the plan's decision table), and the code would sit in the repository that is graded.
 - **Lesson:** a daily quota has a reset time, so a plan that says "tomorrow" needs the reset in the plan's own timezone. I recorded the reset time only after spending the day's calls.
+
+## F14: logged Gemini latency includes the rate-limit wait
+
+- **Date:** 2026-11-26
+- **Stage:** narration (measurement)
+- **What broke:** `runs.jsonl` lines 21–28 show Gemini TTS latency of about 20–22 s per line, but line 20 shows 6.74 s. The code (`narration.py`) keeps Gemini requests 21 s apart with a wait *inside* the function that `_call_and_log` times, so every call after the first is logged with the wait added.
+- **What I did:** documented it rather than rewriting the logs. True per-call latency is about 6.7 s (line 20; the Lite calls on lines 90–91 took 5.8 and 6.2 s). COSTS.md reports the first call's latency and says so.
+- **Lesson:** time the network call only, not the throttle around it. A fix would move `_wait_for_gemini_slot()` outside the timed block.

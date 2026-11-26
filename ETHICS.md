@@ -20,7 +20,7 @@
 
 ### Reconfirmation of the final narration (promised in Request 2)
 - **2026-11-26, near-final film sent to the family group** (Amharic narration, English subtitles, score, end card). Four family members replied, all positive. I also asked three follow-up questions; the answers were **no, no and none**, so **no objection** was raised to the film, the AI figure, the narration or the plan to post publicly.
-- **Before posting:** the s04 and s06 narration will be re-recorded (DESIGN.md, Test 2). The corrected film is sent to the same group before it goes public, as I promised in Request 2. Sent on: `<date, after the re-record>`. Reply: `<reply>`.
+- **Before posting:** the narration was **not** re-recorded: the film posted is the one the family already received on 26 Nov, with no objection (DESIGN.md, Test 2; FAILURES F13). No corrected film exists, so no second approval is needed. If the film changes before posting, it goes to the same group first.
 
 ### Facts used in the film, and where they came from
 All biographical facts in the narration were confirmed by the family elders on 2026-11-25:
