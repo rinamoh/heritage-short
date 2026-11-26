@@ -115,7 +115,17 @@
       "9:16",
       "16:9"
     ],
-    "end_card_s": 3
+    "end_card_s": 3,
+    "end_card": {
+      "title": "Made with AI",
+      "credits": [
+        "Images: FLUX.2 klein 4B on Cloudflare Workers AI",
+        "Music: ACE-Step 1.5",
+        "Narration: Gemini 3.8 Flash TTS, voice Kore",
+        "Assembly: FFmpeg"
+      ],
+      "wan_credit": "Motion: Wan 2.2"
+    }
   },
   "shots": [
     {
@@ -228,7 +238,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "1960s Ethiopia, one small figure walking alone on a red dirt road between green hills, the cloth bundle in her hand",
+        "prompt": "1960s Ethiopia, one small figure walking alone on a red dirt road between green hills, the cloth bundle in her hand extreme wide landscape shot from far away: a tiny distant figure walking away from us along a long winding red dirt road between green hills, mid-stride, the road stretching far ahead of her, the cloth bundle in her hand",
         "seed": 104
       },
       "motion": {

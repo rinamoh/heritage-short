@@ -363,6 +363,22 @@ def _keyframe_jobs(storyboard: dict[str, Any], shot_id: str | None, no_ref: bool
     return jobs
 
 
+def current_keyframes(storyboard: dict[str, Any]) -> dict[str, Path]:
+    """Return each shot's keyframe for the current prompt, seed, size and reference."""
+    current: dict[str, Path] = {}
+    missing: list[str] = []
+    for job in _keyframe_jobs(storyboard, None, False):
+        path = cache.cache_path(job.out_dir, job.item_id, job_cache_key(job), "png")
+        if cache.get_cached(path) is None:
+            missing.append(job.item_id)
+        current[job.item_id] = path
+    if missing:
+        raise ValueError(
+            f"No up-to-date keyframe for {', '.join(missing)}. Run --stage keyframes first."
+        )
+    return current
+
+
 def run_keyframes(
     shot_id: str | None = None,
     no_ref: bool = False,

@@ -119,15 +119,42 @@ def build_timeline(
     return timeline
 
 
+def _times_from_pauses(
+    cues: list[list[str]],
+    begin: float,
+    duration_s: float,
+    silences: list[tuple[float, float]],
+) -> list[tuple[float, float, list[str]]] | None:
+    """Split one segment's cues at its longest internal pauses, or None if there are too few."""
+    inner = [(start, end) for start, end in silences if start > 0.1 and end < duration_s - 0.1]
+    needed = len(cues) - 1
+    if len(inner) < needed:
+        return None
+    gaps = sorted(sorted(inner, key=lambda gap: gap[1] - gap[0], reverse=True)[:needed])
+    starts = [0.0] + [end for _, end in gaps]
+    ends = [start for start, _ in gaps] + [duration_s]
+    return [(round(begin + a, 3), round(begin + b, 3), lines) for a, b, lines in zip(starts, ends, cues)]
+
+
 def subtitle_cue_times(
     shot: dict[str, Any],
     timing: ShotTiming,
+    silences: list[tuple[float, float]] | None = None,
 ) -> list[tuple[float, float, list[str]]]:
-    """Split a shot's spoken time across its subtitle cues in proportion to their text length."""
+    """Time a shot's subtitle cues inside its spoken narration.
+
+    With the pauses of a single-segment shot, each new cue starts after a pause. Otherwise the
+    spoken time is split in proportion to text length.
+    """
     cues: list[list[str]] = shot.get("subtitle_en") or []
     if not cues or not timing.segments:
         return []
     begin = timing.start_s + NARRATION_LEAD_S + timing.segments[0].pause_before_s
+    if len(cues) > 1 and len(timing.segments) == 1 and silences is not None:
+        paused = _times_from_pauses(cues, begin, timing.segments[0].duration_s, silences)
+        if paused is not None:
+            return paused
+        print(f"[WARN] {timing.shot_id}: too few pauses; subtitle cues split by text length")
     spoken = sum(s.duration_s + s.pause_before_s for s in timing.segments)
     span = spoken - timing.segments[0].pause_before_s
     weights = [len(" ".join(lines)) for lines in cues]

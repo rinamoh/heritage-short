@@ -1,6 +1,42 @@
 {
+  "s01": {
+    "file": "s01_6cc12ee8abe7.png",
+    "key": "6cc12ee8abe7c61ad1274304ee0cc767080b60774391318a9fd5804729324cc9"
+  },
+  "s02": {
+    "file": "s02_161de0ddab32.png",
+    "key": "161de0ddab3285e4fdeab807550b8c2bc47fd42849d3c3034642a33e62ad1c34"
+  },
+  "s03": {
+    "file": "s03_0baf63d10d2f.png",
+    "key": "0baf63d10d2f64f99bb996f5869ae0018f12228bbe2b613fdae84961d48cffdc"
+  },
   "s04": {
-    "file": "s04_54c0f2b710bc.png",
-    "key": "54c0f2b710bcb7455c30feb62d8a96df2ab8ff3e9966da60cb210b4ba2d4d495"
+    "file": "s04_335ef8af7e0d.png",
+    "key": "335ef8af7e0dc98b27970df06b513251714fb0a4c175955613bcf2c95eb4d658"
+  },
+  "s05": {
+    "file": "s05_0c42e8bae8db.png",
+    "key": "0c42e8bae8dbf0f17bad312c777c5023bddd6023567b1c04accbf1251f02de1a"
+  },
+  "s06": {
+    "file": "s06_41188a06e8dc.png",
+    "key": "41188a06e8dc1fe7156ab0280b1cd883ed32b613c9c9317f39cb2a5c82b554b0"
+  },
+  "s07": {
+    "file": "s07_e1d8d4906d53.png",
+    "key": "e1d8d4906d5322b66b4fa32f7a9f5ef2b847510d034babc6b43bf85e1c48d2ac"
+  },
+  "s08": {
+    "file": "s08_24a025c3fb2e.png",
+    "key": "24a025c3fb2e35da6b87cdcc21b9e7aa0f59797cc9ac471c7e9a26a05f7b184c"
+  },
+  "s09": {
+    "file": "s09_37c9ac948213.png",
+    "key": "37c9ac948213203c72e9f878b0ea54384408f3fbfac5bb0597a3ccd73a68f0c9"
+  },
+  "s10": {
+    "file": "s10_2b2426320262.png",
+    "key": "2b2426320262b44cfa9f046e0b8532580e8bcd946d4efe77e1a1e14db8893391"
   }
 }

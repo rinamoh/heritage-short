@@ -228,8 +228,31 @@
     "output": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["fps", "ratios", "end_card_s"],
+      "required": ["fps", "ratios", "end_card_s", "end_card"],
       "properties": {
+        "end_card": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "credits", "wan_credit"],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "credits": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "wan_credit": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
         "fps": {
           "type": "integer",
           "const": 24

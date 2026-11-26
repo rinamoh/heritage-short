@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from pipeline.common import config
+from pipeline.common import config, log
 from pipeline.narration import measure_duration_ffprobe
 from pipeline.timeline import ShotTiming, build_timeline, subtitle_cue_times
 
@@ -93,6 +93,33 @@ def plan_music(storyboard_path: Path = config.STORYBOARD_PATH) -> None:
             f"\n[ESTIMATE] No narration yet for {', '.join(estimated)}. "
             "Run music-plan again after narration, before generating music."
         )
+
+
+def check_cached_music(
+    storyboard_path: Path = config.STORYBOARD_PATH,
+    log_path: Path = config.RUNS_LOG_PATH,
+) -> Path:
+    """The full run's music step: the score is made on a GPU notebook, so only reuse it here."""
+    music = _load(storyboard_path)["music"]
+    seed = music.get("chosen")
+    path = config.stage_output_dir("music", create=False) / f"music_{seed}.wav"
+    if seed is None or not path.is_file():
+        raise FileNotFoundError(
+            "No chosen score. Run kaggle/music_acestep.ipynb, put the files in outputs/music/, "
+            "then: python run.py --stage music-import --choose <seed>"
+        )
+    log.log_call(
+        stage="music",
+        shot_id=None,
+        provider="local",
+        model="ACE-Step-1.5",
+        params={"file": path.name},
+        seed=seed,
+        cache_hit=True,
+        log_path=log_path,
+    )
+    print(f"[CACHED] music: {path.name}")
+    return path
 
 
 def _append_kaggle_log(source: Path, log_path: Path) -> int:

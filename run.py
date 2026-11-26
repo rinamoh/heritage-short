@@ -15,6 +15,7 @@ STAGES: tuple[str, ...] = (
     "keyframes",
     "narration",
     "shots",
+    "film",
     "assemble",
     "radio",
     "music-plan",
@@ -107,6 +108,47 @@ def run_validation() -> int:
     return 0
 
 
+def run_visual_stage(stage: str) -> int:
+    """Run the shots stage, or the film stage ("assemble" is the same thing)."""
+    from pipeline import assemble, shots
+    from pipeline.common.ffmpeg import FFmpegError
+
+    try:
+        if stage == "shots":
+            shots.run_shots()
+        else:
+            assemble.run_film()
+    except (ValueError, FileNotFoundError, FFmpegError) as exc:
+        print(f"[ABORT] {exc}")
+        return 1
+    return 0
+
+
+def run_full_pipeline() -> int:
+    """keyframes, narration, music (cached), shots, film; stop at the first incomplete step."""
+    from pipeline import keyframes, music, narration
+
+    try:
+        print("== keyframes")
+        failed = keyframes.run_keyframes()
+        if failed:
+            print(f"[STOP] Keyframes failed: {', '.join(failed)}")
+            return 1
+        print("== narration")
+        if narration.run_narration():
+            return 1
+        print("== music")
+        music.check_cached_music()
+    except (ValueError, FileNotFoundError, narration.QuotaGuardError) as exc:
+        print(f"[ABORT] {exc}")
+        return 2
+    print("== shots")
+    if run_visual_stage("shots") != 0:
+        return 1
+    print("== film")
+    return run_visual_stage("film")
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """Parse CLI arguments, run validation first, and execute the requested stage."""
     parser = build_parser()
@@ -118,6 +160,10 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.export_kaggle_jobs:
         print("Kaggle job export is not implemented yet; validation completed.")
+    elif args.stage is None:
+        return run_full_pipeline()
+    elif args.stage in ("shots", "film", "assemble"):
+        return run_visual_stage(args.stage)
     elif args.stage in ("refsheet", "keyframes"):
         from pipeline import keyframes
 
