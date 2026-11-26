@@ -2,11 +2,6 @@
 
 An 88-second vertical film made with open and free-tier AI models: Amharic narration with English subtitles, a generated score, and Ken Burns motion over generated keyframes. The film is a tribute to my grandmother. The family has seen it and approved it, and no real person's face or voice is generated. It is labelled as AI-made on the end card and in the post.
 
-- **Film (vertical 9:16):** `<paste link>`
-- **Film (horizontal 16:9):** `<paste link>`
-- **Walkthrough (≤ 5 min):** `<paste link>`
-- **Public post:** `<paste link>`
-- **Report:** `<paste link>`
 
 ## Run it: one command
 
