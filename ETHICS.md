@@ -5,7 +5,7 @@
 ### Who the film is about
 - **Subject:** my late grandmother, whom the family calls **Emaye**. She came to Addis Ababa from a small town in the south in the 1960s, at about 16, to continue her education.
 - **How she appears:** only as an **invented, AI-generated figure**, always seen from behind, in silhouette or at a distance. **No clear face is ever shown.** **No photograph of her was used** as input to any model, and the figure isn't a reconstruction of her real appearance. Her life stages are shown through clothing: L1 day-to-day clothes, L2 school uniform, L3 a mother's dress with a head covering.
-- **Voice:** she isn't voiced. The narration is a **stock Addis AI TTS voice** (`am-hamen`) speaking as a grandchild. No voice was cloned or replicated, and no words are put in her mouth: the narration describes her in the third person.
+- **Voice:** she isn't voiced. The narration is a **stock Gemini TTS voice** (`Kore`, Gemini 3.8 Flash TTS) speaking as a grandchild. No voice was cloned or replicated, and no words are put in her mouth: the narration describes her in the third person.
 
 ### Who gave consent, and how
 | Field | Record |
@@ -45,11 +45,11 @@ The town is deliberately not named.
 | Keyframes | FLUX.2 [klein] **4B** on Cloudflare Workers AI | Apache 2.0 (model); Cloudflare terms (service) | 4B chosen deliberately: the 9B variant is non-commercial |
 | Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 | Wan claims no rights over generated content; responsibility for use is mine |
 | Score | ACE-Step 1.5 | MIT | The brief states outputs may be used commercially. I couldn't confirm the training-data statement on the model pages I read; I'm relying on the brief for it. |
-| Narration | **Addis AI** TTS, voice `am-hamen` (chosen in E1) | Addis AI Terms: **TO CHECK** at addisassistant.com before posting (ownership and public use of generated audio; use of submitted text). The pricing page doesn't say. | Paid, about 5 ETB/min; $3.17 free signup credit |
-| Narration experiments | Gemini 3.8 Flash TTS / Flash Lite TTS | Gemini API terms: https://ai.google.dev/gemini-api/terms | Free tier: see §4 on data use |
+| Narration (film) | **Gemini 3.8 Flash TTS**, voice `Kore` | Gemini API terms: https://ai.google.dev/gemini-api/terms. Google doesn't claim ownership of generated content | Free tier; see §4 on data use |
+| Narration (v1, not in the film) | Addis AI TTS, voice `am-hamen` | Addis AI Terms: check at addisassistant.com if Addis audio is used later | Used for v1 / Test 1 only, ~3.45 ETB |
 | Subtitles / translation | Gemini 3.8 Flash | Gemini API terms | |
 | Assembly | FFmpeg | LGPL/GPL (tool); no claim on output | |
-| Coding agent | Antigravity CLI | Google terms | |
+| Coding agent | Antigravity CLI (until its weekly quota ran out, F6), then Claude Code (Sonnet 5.5) in VS Code | Google terms; Anthropic terms | Switch recorded in FAILURES F6 |
 
 ## 3. Labelling plan
 - **AI end card** (3 s) at the end of both versions: "Made with AI", plus the models used.

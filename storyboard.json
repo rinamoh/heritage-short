@@ -31,54 +31,74 @@
     ]
   },
   "voice": {
-    "provider": "addis",
-    "model": null,
-    "name": "am-hamen",
-    "style": null,
+    "provider": "gemini",
+    "model": "gemini-3.8-flash-tts",
+    "name": "Kore",
+    "style": "wistful and contemplative, unhurried, like a grandchild remembering an elder; every sentence is a statement that settles with a falling tone at the end, never rising like a question",
     "settings": {}
   },
   "music": {
-    "caption": "gentle Ethiopian-inspired instrumental, soft plucked krar-like strings, warm pad, sparse, nostalgic, slow build, no vocals",
+    "caption": "gentle Ethiopian-inspired instrumental, soft plucked krar-like strings, warm pad, sparse, nostalgic, slow build, motif returns at the end, no vocals",
     "bpm": 72,
     "key": "D minor",
-    "duration_s": 80,
+    "duration_s": 73.375,
     "instrumental": true,
-    "seed": 11,
+    "seeds": [
+      11,
+      12,
+      13
+    ],
     "cues": [
       {
         "id": "1",
-        "in_s": 0,
-        "out_s": 24,
-        "shots": ["s01", "s02", "s03"],
-        "description": "Very sparse, warm; a single plucked string and a soft pad; no melody"
+        "in_s": 0.0,
+        "out_s": 21.583,
+        "shots": [
+          "s01",
+          "s02",
+          "s03"
+        ],
+        "description": "Very sparse and warm: a single plucked string and a soft pad, no melody"
       },
       {
         "id": "2",
-        "in_s": 24,
-        "out_s": 36,
-        "shots": ["s04", "s05"],
+        "in_s": 21.583,
+        "out_s": 31.542,
+        "shots": [
+          "s04",
+          "s05"
+        ],
         "description": "The same texture thins out; s05 is near-silent"
       },
       {
         "id": "3",
-        "in_s": 36,
-        "out_s": 60,
-        "shots": ["s06", "s07", "s08"],
+        "in_s": 31.542,
+        "out_s": 51.958,
+        "shots": [
+          "s06",
+          "s07",
+          "s08"
+        ],
         "description": "A gentle pulse enters; still low under the voice"
       },
       {
         "id": "4",
-        "in_s": 60,
-        "out_s": 76,
-        "shots": ["s09", "s10"],
+        "in_s": 51.958,
+        "out_s": 70.375,
+        "shots": [
+          "s09",
+          "s10"
+        ],
         "description": "Fuller; the cue 1 motif returns"
       },
       {
         "id": "end",
-        "in_s": 76,
-        "out_s": 79,
-        "shots": ["end"],
-        "description": "One sustained note fading"
+        "in_s": 70.375,
+        "out_s": 73.375,
+        "shots": [
+          "end"
+        ],
+        "description": "One sustained note fading out"
       }
     ],
     "chosen": null
@@ -95,9 +115,12 @@
       "reason": "Opens on the motif and on \"us\"",
       "shot_size": "Close-up",
       "look": null,
-      "duration_s": 7,
       "narration": {
-        "text_am": "ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው።"
+        "segments": [
+          {
+            "text_am": "ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው።"
+          }
+        ]
       },
       "subtitle_en": [
         ["We are only here because of her."]
@@ -119,9 +142,12 @@
       "reason": "Establishing: the world she'll leave",
       "shot_size": "Extreme wide",
       "look": null,
-      "duration_s": 7,
       "narration": {
-        "text_am": "በደቡብ ኢትዮጵያ ባለች አንዲት ትንሽ ከተማ፣ ትምህርት ከአምስተኛ ክፍል አያልፍም ነበር።"
+        "segments": [
+          {
+            "text_am": "በደቡብ ኢትዮጵያ ባለች አንዲት ትንሽ ከተማ፣ ትምህርት ከአምስተኛ ክፍል አያልፍም ነበር።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -146,9 +172,13 @@
       "reason": "The heart of the film: longest, quietest hold",
       "shot_size": "Medium, from behind",
       "look": "L1",
-      "duration_s": 10,
+      "hold_after_s": 3.0,
       "narration": {
-        "text_am": "እማዬ በአሥራ ስድስት ዓመቷ፣ የማታውቀው ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች።"
+        "segments": [
+          {
+            "text_am": "እማዬ በአሥራ ስድስት ዓመቷ፣ ወደማታውቀው ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -173,9 +203,12 @@
       "reason": "Shows \"alone\" and \"on foot\" through scale",
       "shot_size": "Wide",
       "look": "L1",
-      "duration_s": 7,
       "narration": {
-        "text_am": "የምታውቀውን ሁሉ ትታ፣ በእግሯ ተጓዘች። ብቻዋን።"
+        "segments": [
+          {
+            "text_am": "የምታውቀውን ሁሉ ትታ፣ በእግሯ ተጓዘች። ብቻዋን።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -202,7 +235,7 @@
       "look": null,
       "duration_s": 5,
       "narration": {
-        "text_am": ""
+        "segments": []
       },
       "subtitle_en": [],
       "keyframe": {
@@ -222,9 +255,12 @@
       "reason": "The city is enormous; she knows no one",
       "shot_size": "Extreme wide",
       "look": "L1",
-      "duration_s": 7,
       "narration": {
-        "text_am": "አዲስ አበባ እጅግ ሰፊ ነበረች፤ እሷ ደግሞ ማንንም አታውቅም ነበር።"
+        "segments": [
+          {
+            "text_am": "አዲስ አበባ እጅግ ሰፊ ነበረች፤ እሷ ደግሞ ማንንም አታውቅም ነበር።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -249,13 +285,16 @@
       "reason": "Motif introduced; struggle and study",
       "shot_size": "Close-up",
       "look": null,
-      "duration_s": 8,
       "narration": {
-        "text_am": "ማታ ማታ፣ ላለመበለጥ በኩራዝ ብርሃን ታጠና ነበር።"
+        "segments": [
+          {
+            "text_am": "በየምሽቱ፣ በኩራዝ ብርሃን ታግዛ፣ ላለመበለጥ ታጠና ነበር።"
+          }
+        ]
       },
       "subtitle_en": [
         [
-          "At night, by the light of a kuraz,",
+          "Every evening, helped by a kuraz's light,",
           "she studied so she wouldn't fall behind."
         ]
       ],
@@ -276,9 +315,12 @@
       "reason": "\"Only woman\" without a crowd",
       "shot_size": "Medium, from behind",
       "look": "L2",
-      "duration_s": 8,
       "narration": {
-        "text_am": "በክፍሏ ውስጥ ብዙ ጊዜ ብቸኛዋ ሴት እሷ ነበረች። መካከለኛ ደረጃን አጠናቃ፣ ሁለተኛ ደረጃ ጀመረች።"
+        "segments": [
+          {
+            "text_am": "በክፍሏ ውስጥ ብዙ ጊዜ ብቸኛዋ ሴት እሷ ነበረች። መካከለኛ ደረጃን አጠናቃ፣ ሁለተኛ ደረጃ ጀመረች።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -307,9 +349,12 @@
       "reason": "Generations told by light, not faces",
       "shot_size": "Medium, from behind",
       "look": "L3",
-      "duration_s": 8,
       "narration": {
-        "text_am": "ልጆቿንም፣ ለትምህርት ማንኛውንም መንገድ መጓዝ እንደሚገባ አስተማረች።"
+        "segments": [
+          {
+            "text_am": "ልጆቿንም፣ ለትምህርት ማንኛውንም መንገድ መጓዝ እንደሚገባ አስተማረች።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -334,9 +379,13 @@
       "reason": "Motif closes the loop; theme peaks",
       "shot_size": "Wide, slow pull-back",
       "look": null,
-      "duration_s": 8,
+      "hold_after_s": 2.5,
       "narration": {
-        "text_am": "ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። እናመሰግናለን፣ እማዬ።"
+        "segments": [
+          {
+            "text_am": "ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። <long pause> እናመሰግናለን፣ እማዬ።"
+          }
+        ]
       },
       "subtitle_en": [
         [
@@ -344,8 +393,11 @@
           "was lit from hers."
         ],
         [
-          "An educated person may fall, but never",
-          "falls for good. Thank you, Emaye."
+          "An educated person may fall,",
+          "but never falls for good."
+        ],
+        [
+          "Thank you, Emaye."
         ]
       ],
       "keyframe": {

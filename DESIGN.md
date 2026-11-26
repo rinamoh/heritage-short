@@ -66,39 +66,64 @@ Constant across all looks: the same woman (same build, skin tone and hair), neve
 | s10 | Return | Wide, slow pull-back | Today's home at night: several lamps lit over study desks, no people's faces | — | Motif closes the loop; theme peaks | 8 |
 | end | End card | — | "Made with AI" + models | — | Required | 3 |
 
-## Narration (final v1) and subtitles
+## Narration (v2, after Test 1) and subtitles
 
-Narrator: a grandchild, third person. Provider: **Addis AI**, voice `am-hamen` (chosen in E1).
+Narrator: a grandchild, third person. Provider: **Gemini 3.8 Flash TTS**, voice **Kore**, style: *"wistful and contemplative, unhurried, like a grandchild remembering an elder; every sentence is a statement that settles with a falling tone at the end, never rising like a question"*. Switched from Addis AI after Test 1 (see E1 revision and F7). Lines marked **changed** were revised after Test 1.
 
 | Shot | Amharic narration | English subtitle cue(s) (≤ 2 lines × 42 chars each; `/` = line break) |
 |---|---|---|
-| s01 | ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው። | We are only here because of her. |
+| s01 | ዛሬ እዚህ የቆምነው በእሷ ምክንያት ብቻ ነው። *(text unchanged; delivery fixed in E2)* | We are only here because of her. |
 | s02 | በደቡብ ኢትዮጵያ ባለች አንዲት ትንሽ ከተማ፣ ትምህርት ከአምስተኛ ክፍል አያልፍም ነበር። | In a small town in southern Ethiopia, / school ended after fifth grade. |
-| s03 | እማዬ በአሥራ ስድስት ዓመቷ፣ የማታውቀው ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች። | At sixteen, Emaye chose to go to a land / she didn't know, to keep learning. |
+| s03 **changed** | እማዬ በአሥራ ስድስት ዓመቷ፣ **ወደማታውቀው** ሀገር ሄዳ ትምህርቷን ለመቀጠል ወሰነች። | At sixteen, Emaye chose to go to a land / she didn't know, to keep learning. |
 | s04 | የምታውቀውን ሁሉ ትታ፣ በእግሯ ተጓዘች። ብቻዋን። | She left everything she knew, and walked. / Alone. |
 | s05 | *(silence: music only)* | *(none)* |
 | s06 | አዲስ አበባ እጅግ ሰፊ ነበረች፤ እሷ ደግሞ ማንንም አታውቅም ነበር። | Addis Ababa was enormous, / and she knew no one. |
-| s07 | ማታ ማታ፣ ላለመበለጥ በኩራዝ ብርሃን ታጠና ነበር። | At night, by the light of a kuraz, / she studied so she wouldn't fall behind. |
+| s07 **changed** | **በየምሽቱ፣ በኩራዝ ብርሃን ታግዛ፣** ላለመበለጥ ታጠና ነበር። | Every evening, helped by a kuraz's light, / she studied so she wouldn't fall behind. |
 | s08 | በክፍሏ ውስጥ ብዙ ጊዜ ብቸኛዋ ሴት እሷ ነበረች። መካከለኛ ደረጃን አጠናቃ፣ ሁለተኛ ደረጃ ጀመረች። | **Cue 1:** In her classroom, she was often / the only woman. **Cue 2:** She finished middle school / and began high school. |
 | s09 | ልጆቿንም፣ ለትምህርት ማንኛውንም መንገድ መጓዝ እንደሚገባ አስተማረች። | And she taught her children / that learning is worth any road. |
-| s10 | ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። እናመሰግናለን፣ እማዬ። | **Cue 1:** Every lamp we light today / was lit from hers. **Cue 2:** An educated person may fall, but never / falls for good. Thank you, Emaye. |
+| s10 **changed** | ዛሬ የምናበራው እያንዳንዱ መብራት ከእሷ ኩራዝ የተለኮሰ ነው። የተማረ ወድቆ አይወድቅም። **`<long pause>`** እናመሰግናለን፣ እማዬ። | **Cue 1:** Every lamp we light today / was lit from hers. **Cue 2:** An educated person may fall, / but never falls for good. **Cue 3:** Thank you, Emaye. |
 
 Notes:
 - s02 doesn't say "1960s" aloud: in Amharic a year can be heard as the Ethiopian calendar, and TTS misreads numerals. The period is carried by the pictures.
-- Multi-cue shots (s08, s10) split the shot's time across cues in proportion to their text length.
-- **Measure the real length from the TTS output.** If it's under 60 s, lengthen the holds (s03, s05, s10) before adding words.
+- s03: "ወደማታውቀው" (*to* a land she didn't know) is also more grammatical than "የማታውቀው".
+- s07: "ማታ ማታ" was read with a stutter (repeated, then restarted), and "በኩራዝ ታጠና" read as studying *with* a kuraz rather than *helped by* its light. "በየምሽቱ" (every evening) avoids the repeated word; "ታግዛ" (helped by) fixes the meaning.
+- s10: the pause after the saying uses Gemini's inline `<long pause>` tag, so the line stays one call (9 Gemini calls for the whole narration, within the 10/day limit).
+- **Timing rule (v2):** each shot lasts as long as its narration plus a short hold (≈ 1.2 s by default), so the narration flows. Only s05 (planned silence) and the end of s10 hold longer. The total must stay at 60–90 s, end card included.
+- Subtitle cues follow the narration segments.
 
-## Music spotting (v1)
-| Cue | In–out (approx.) | Shots | Description |
+## Music spotting (v2: cues follow shots; times are computed from the timeline)
+
+The score is **one instrumental track** the length of the film (narration timeline + 3 s end card, ≈ 65–70 s). Cue times are **not typed by hand**: the pipeline calculates each cue's in/out time from the shots it covers, so they can't go stale when shot lengths change.
+
+| Cue | Shots | What the music does | Why |
 |---|---|---|---|
-| 1 | 0:00–0:24 | s01–s03 | Very sparse, warm; a single plucked string and a soft pad; no melody |
-| 2 | 0:24–0:36 | s04–s05 | The same texture thins out; **s05 is near-silent** |
-| 3 | 0:36–0:60 | s06–s08 | A gentle pulse enters; still low under the voice |
-| 4 | 0:60–0:76 | s09–s10 | Fuller; the cue 1 motif returns |
-| end | 0:76–0:79 | end card | One sustained note fading |
+| 1 "Dawn" | s01–s03 | Very sparse and warm: a single plucked string and a soft pad, no melody. Establishes the motif quietly. | Leaves room for the opening lines; the decision (s03) must feel quiet. |
+| 2 "Leaving" | s04–s05 | The same texture thins out; **s05 is near-silent** (planned silence). | The cost of leaving: silence as a tool. |
+| 3 "The city" | s06–s08 | A gentle pulse enters; still low under the voice. | Struggle and persistence: movement without drama. |
+| 4 "Light" | s09–s10 | Fuller; the cue 1 motif returns. | Generations: the theme peaks as the lamps multiply. |
+| End | end card | One sustained note fading out. | A clean ending for the AI end card. |
+
+**ACE-Step settings (in `storyboard.json → music`):**
+- **Caption:** "gentle Ethiopian-inspired instrumental, soft plucked krar-like strings, warm pad, sparse, nostalgic, slow build, motif returns at the end, no vocals"
+- **Fields, not caption text:** bpm 72, key "D minor", duration = film length (computed), instrumental true.
+- **Candidates:** 3 seeds (11, 12, 13). Choose by listening **quietly under the narration**, then write the choice and the reason in EXPERIMENTS.md.
 
 ## Test 1: radio cut
-`<date / who (relationship) / medium / their words / insight / storyboard change + commit hash>`
+
+- **Date / medium:** 2026-11-26, shown to family in person / on the family group `<confirm>`.
+- **Who (≥ 3):** `<fill in: e.g. father, aunt, cousin>`.
+- **What they said:**
+  1. **s01** sounds like a question: the end rises as if more is coming. It should be **wistful and contemplative**, and land as a statement.
+  2. A **long silence after the first line**, and an **unsettling silence after each sentence**, as if the story stops where it shouldn't.
+  3. Sentences are **cut off abruptly** before they finish (s03 especially).
+  4. **s03:** "የማታውቀው" is pronounced unclearly, "like a child with a lisp".
+  5. **s07:** "ማታ ማታ" is repeated, then the sentence restarts with "ማታ…". And "በኩራዝ … ታጠና" reads wrong: the kuraz should be **aiding** her, not something she's stuck with.
+  6. **s10:** there should be a **pause after "የተማረ ወድቆ አይወድቅም"**, then "Thank you, Emaye".
+- **Insights:**
+  - **The biggest problem is timing, not words.** The shots were planned before the narration existed (7–10 s each), but the spoken lines are 2.6–6.9 s. The leftover 3–5 s of near-silence in every shot broke the story into pieces. This confirms the brief's advice: the narration should set shot length, not the other way round.
+  - The abrupt cuts are a defect to diagnose (TTS output or assembly; see FAILURES F7).
+  - Three lines need text changes (s03, s07, s10) and one needs a delivery change (s01).
+- **Changes made:** narration v2 (table above); timing rule changed to narration-driven shot lengths (+ s03 held 3 s, s10 held 2.5 s); a pause before "Thank you, Emaye"; **provider switched to Gemini TTS** with a wistful, falling-tone style instruction (fixes s01's question-like ending, and Addis AI clipped final consonants: F7). Storyboard commit: `<hash>`.
 
 ## Test 2: near-final cut
 `<same fields>`

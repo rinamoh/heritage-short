@@ -125,7 +125,7 @@
         "key",
         "duration_s",
         "instrumental",
-        "seed",
+        "seeds",
         "cues",
         "chosen"
       ],
@@ -149,8 +149,13 @@
         "instrumental": {
           "type": "boolean"
         },
-        "seed": {
-          "type": "integer"
+        "seeds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer"
+          }
         },
         "cues": {
           "type": "array",
@@ -188,7 +193,7 @@
           }
         },
         "chosen": {
-          "type": ["string", "null"]
+          "type": ["integer", "null"]
         }
       }
     },
@@ -223,7 +228,6 @@
           "reason",
           "shot_size",
           "look",
-          "duration_s",
           "narration",
           "subtitle_en",
           "keyframe",
@@ -252,15 +256,37 @@
           "duration_s": {
             "type": "number",
             "minimum": 3,
-            "maximum": 12
+            "maximum": 12,
+            "default": 3
+          },
+          "hold_after_s": {
+            "type": "number",
+            "minimum": 0,
+            "default": 1.2
           },
           "narration": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["text_am"],
+            "required": ["segments"],
             "properties": {
-              "text_am": {
-                "type": "string"
+              "segments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["text_am"],
+                  "properties": {
+                    "text_am": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "pause_before_s": {
+                      "type": "number",
+                      "minimum": 0,
+                      "default": 0
+                    }
+                  }
+                }
               },
               "style_override": {
                 "type": ["string", "null"]

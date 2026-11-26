@@ -11,8 +11,6 @@ from jsonschema import Draft202012Validator
 from pipeline.common import config
 
 MAX_SUBTITLE_LINE_CHARS: int = 42
-MIN_TOTAL_DURATION_S: float = 60.0
-MAX_TOTAL_DURATION_S: float = 90.0
 
 
 def format_json_path(parts: Iterable[str | int]) -> str:
@@ -40,7 +38,7 @@ def collect_schema_errors(storyboard: Any, schema: dict[str, Any]) -> list[str]:
 
 
 def collect_domain_errors(storyboard: dict[str, Any]) -> list[str]:
-    """Check look references, subtitle line lengths, unique shot IDs, and total duration."""
+    """Check look references, subtitle line lengths, unique shot IDs, and silent shot lengths."""
     errors: list[str] = []
 
     character = storyboard.get("character") or {}
@@ -53,7 +51,6 @@ def collect_domain_errors(storyboard: dict[str, Any]) -> list[str]:
 
     shots = storyboard.get("shots") or []
     seen_ids: set[str] = set()
-    total_shot_s = 0.0
 
     for idx, shot in enumerate(shots):
         if not isinstance(shot, dict):
@@ -71,9 +68,9 @@ def collect_domain_errors(storyboard: dict[str, Any]) -> list[str]:
                 f"{format_json_path(['shots', idx, 'look'])}: look {look!r} not found in character.looks"
             )
 
-        duration_s = shot.get("duration_s")
-        if isinstance(duration_s, (int, float)):
-            total_shot_s += float(duration_s)
+        narration = shot.get("narration")
+        if isinstance(narration, dict) and narration.get("segments") == [] and "duration_s" not in shot:
+            errors.append(f"{format_json_path(['shots', idx])}: a silent shot needs duration_s")
 
         subtitles = shot.get("subtitle_en")
         if isinstance(subtitles, list):
@@ -86,17 +83,6 @@ def collect_domain_errors(storyboard: dict[str, Any]) -> list[str]:
                             f"{format_json_path(['shots', idx, 'subtitle_en', cue_idx, line_idx])}: "
                             f"subtitle line has {len(line)} chars (max {MAX_SUBTITLE_LINE_CHARS})"
                         )
-
-    output = storyboard.get("output") or {}
-    end_card_s = output.get("end_card_s", 0)
-    end_card_val = float(end_card_s) if isinstance(end_card_s, (int, float)) else 0.0
-    total_s = total_shot_s + end_card_val
-
-    if not (MIN_TOTAL_DURATION_S <= total_s <= MAX_TOTAL_DURATION_S):
-        errors.append(
-            f"$.shots / $.output.end_card_s: total duration {total_s:.2f}s must be between "
-            f"{MIN_TOTAL_DURATION_S:.0f}s and {MAX_TOTAL_DURATION_S:.0f}s"
-        )
 
     return errors
 
@@ -135,11 +121,9 @@ def validate_storyboard(
         return 1
 
     shots = storyboard.get("shots", [])
-    end_card_s = float(storyboard.get("output", {}).get("end_card_s", 0))
-    total_s = sum(float(s.get("duration_s", 0)) for s in shots) + end_card_s
     print(
         f"VALID: {storyboard_path.name} passed schema and domain checks "
-        f"({len(shots)} shots, total {total_s:.0f}s including {end_card_s:.0f}s end card)."
+        f"({len(shots)} shots; total length is checked by the radio stage)."
     )
     return 0
 

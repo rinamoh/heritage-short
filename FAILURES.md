@@ -78,3 +78,22 @@
   3. Considered a second Antigravity account. Rejected: it would be getting around a usage limit, the same reason as the extra-keys decision in F5.
 - **What fixed it:** switched to **Claude Code in VS Code**. It's paid, which the brief allows (it names Claude Code as a professional tool; free agents are only described as sufficient). The repo's `CLAUDE.md` imports `AGENTS.md` (`@AGENTS.md`), so the same rules apply to it.
 - **Lesson:** the brief warns that free agent quotas are weekly. One long agent session (many prompts plus waiting on runs) can use up the whole week. Run long pipeline commands myself in the terminal, and use the agent only to write and fix code.
+
+## F7: Radio cut: sentences cut off, and long silences between lines
+
+- **Date:** 2026-11-26
+- **Stage:** radio cut (task 1.13) → Test 1
+- **What broke:** family listeners (Test 1) heard sentences **cut off before they finished** (s03 especially), and an **unsettling silence after every line**, as if the story stopped.
+- **Cause (silences):** shot lengths (7–10 s) were planned before the narration existed. The spoken lines are 2.6–6.9 s (41.4 s in total, runs.jsonl lines 10–18), leaving 3–5 s of near-silence in each shot.
+- **Cause (cut-offs):** `<fill in after diagnosis: raw WAV already cut by the TTS / trimmed or faded by assemble.py>`.
+- **What I tried:** `<fill in: listened to the raw WAVs; ffprobe durations vs durations.json; checked the trim/fade filters in assemble.py>`
+- **What fixed it:** shot length is now driven by narration (narration + ≈1.2 s hold; s05 and the end of s10 hold longer). `<fill in the cut-off fix>`.
+- **Lesson:** time the voice first, then the pictures. The brief says exactly this, and I learned it the hard way.
+
+## F8: TTS repeated a word and restarted the sentence (s07)
+
+- **Date:** 2026-11-26
+- **Stage:** narration → Test 1
+- **What broke:** Addis AI read "ማታ ማታ፣ …" by repeating "ማታ" and restarting the sentence. The family also said "በኩራዝ … ታጠና" read as studying *with* a kuraz rather than *helped by* its light.
+- **What I did:** reworded to "በየምሽቱ፣ በኩራዝ ብርሃን ታግዛ፣ ላለመበለጥ ታጠና ነበር።" (no repeated word, correct meaning); see E3.
+- **Lesson:** a deliberately repeated word ("ማታ ማታ") can trip a TTS model. Prefer one unambiguous word.

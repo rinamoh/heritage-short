@@ -10,7 +10,7 @@ import jsonschema
 
 from pipeline.common import config
 
-STAGES: tuple[str, ...] = ("keyframes", "narration", "shots", "assemble", "radio")
+STAGES: tuple[str, ...] = ("keyframes", "narration", "shots", "assemble", "radio", "music-plan", "music-import")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -39,6 +39,18 @@ def build_parser() -> argparse.ArgumentParser:
         choices=("gemini", "addis"),
         default=None,
         help="Override voice.provider for the narration stage without editing storyboard.json.",
+    )
+    parser.add_argument(
+        "--allow-calls",
+        type=int,
+        default=None,
+        help="Narration: allow this many Gemini TTS calls (default limit 9).",
+    )
+    parser.add_argument(
+        "--choose",
+        type=int,
+        default=None,
+        help="music-import: set music.chosen to this seed.",
     )
     return parser
 
@@ -91,12 +103,30 @@ def main(argv: Sequence[str] | None = None) -> int:
         from pipeline import narration
 
         shot_ids = narration.parse_shots_arg(args.shots)
-        narration.run_narration(shot_ids=shot_ids, provider_override=args.provider)
+        try:
+            missing = narration.run_narration(
+                shot_ids=shot_ids,
+                provider_override=args.provider,
+                allow_calls=args.allow_calls,
+            )
+        except narration.QuotaGuardError as exc:
+            print(f"[ABORT] {exc}")
+            return 2
+        if missing:
+            return 1
     elif args.stage == "radio":
         from pipeline import assemble
 
         if assemble.run_radio() is None:
             return 1
+    elif args.stage == "music-plan":
+        from pipeline import music
+
+        music.plan_music()
+    elif args.stage == "music-import":
+        from pipeline import music
+
+        music.import_music(choose=args.choose)
     elif args.stage:
         print(f"Stage '{args.stage}' is not implemented yet; validation completed.")
 
