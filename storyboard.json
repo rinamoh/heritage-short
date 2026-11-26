@@ -107,7 +107,7 @@
         "description": "One sustained note fading out"
       }
     ],
-    "chosen": null
+    "chosen": 11
   },
   "output": {
     "fps": 24,

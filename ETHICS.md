@@ -45,6 +45,7 @@ The town is deliberately not named.
 | Keyframes | FLUX.2 [klein] **4B** on Cloudflare Workers AI | Apache 2.0 (model); Cloudflare terms (service) | 4B chosen deliberately: the 9B variant is non-commercial |
 | Moving shots | Wan 2.2 TI2V-5B | Apache 2.0 | Wan claims no rights over generated content; responsibility for use is mine |
 | Score | ACE-Step 1.5 | MIT | The brief states outputs may be used commercially. I couldn't confirm the training-data statement on the model pages I read; I'm relying on the brief for it. |
+| Score: where it ran | **Google Colab** (free tier, T4 GPU), 2026-11-26. The Kaggle notebook never left its queue (FAILURES F11) and produced nothing. | Google Colab terms of service `<add the link you read>` | Only the generic music prompt (caption, BPM, key, duration) was sent. No personal data, no family details. |
 | Narration (film) | **Gemini 3.8 Flash TTS**, voice `Kore` | Gemini API terms: https://ai.google.dev/gemini-api/terms. Google doesn't claim ownership of generated content | Free tier; see §4 on data use |
 | Narration (v1, not in the film) | Addis AI TTS, voice `am-hamen` | Addis AI Terms: check at addisassistant.com if Addis audio is used later | Used for v1 / Test 1 only, ~3.45 ETB |
 | Subtitles / translation | Gemini 3.8 Flash | Gemini API terms | |
@@ -60,4 +61,5 @@ The town is deliberately not named.
 ## 4. Private data
 - The town stays "a small town in the south". **No town name, family names or personal details** are sent to any model.
 - No family photographs are uploaded to any endpoint.
+- The music notebook on Colab received only the generic music description from `storyboard.json`.
 - Free endpoints may use submitted data for training, which is why the prompts contain only generic descriptions.
