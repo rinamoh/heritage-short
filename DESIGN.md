@@ -39,13 +39,13 @@
 | Ending | A list of achievements / a family saying | **"የተማረ ወድቆ አይወድቅም"** + "Thank you, Emaye" | Returns to family voice; one strong line |
 
 ## Character looks (one reference sheet each)
-Constant across all looks: the same woman (same build, skin tone and hair), never a clear face, the same style block.
+Constant across all looks: the same woman (same build, skin tone and hair), never a clear face, the same style block. Age is part of each look (L1 16, L2 about 18, L3 in her thirties). The reference for each look was chosen from 4 options (seeds 1–4); see EXPERIMENTS.md E5.
 
-| Look | Life stage | Clothing and hair | Carries | Used in |
-|---|---|---|---|---|
-| **L1** | Age 16, leaving home and arriving | Her day-to-day clothes: a simple, modest village dress; hair in a ponytail | The plain, faded greyish-black cloth bundle | s03, s04, s06 |
-| **L2** | Student in Addis | School uniform; hair in a ponytail | School bag, closed books | s08 |
-| **L3** | Mother | A dress with a head covering, as Ethiopian mothers commonly wear | — | s09 |
+| Look | Life stage | Clothing and hair | Carries | Used in | Reference (chosen) |
+|---|---|---|---|---|---|
+| **L1** | Age 16, leaving home and arriving | Her day-to-day clothes: a simple, modest village dress; hair in a ponytail | The plain, faded greyish-black cloth bundle | s03, s04, s06 | `outputs/refs/L1_4.png` |
+| **L2** | Student in Addis | School uniform; hair in a ponytail | School bag, closed books | s08 | `outputs/refs/L2_1.png` |
+| **L3** | Mother | A dress with a head covering, as Ethiopian mothers commonly wear | — | s09 | `outputs/refs/L3_4.png` |
 
 ## Story
 - **Logline:** In the 1960s, a sixteen-year-old girl walks alone from a small town in the south to Addis Ababa to keep learning, and lights the lamp her whole family still studies by.

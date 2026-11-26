@@ -10,6 +10,7 @@
     "intent",
     "language",
     "style_block",
+    "no_text_suffix",
     "character",
     "voice",
     "music",
@@ -37,14 +38,41 @@
       "type": "string",
       "minLength": 1
     },
+    "no_text_suffix": {
+      "type": "string",
+      "minLength": 1
+    },
     "character": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["base", "looks"],
+      "required": ["base", "shot_suffix", "refsheet", "looks"],
       "properties": {
         "base": {
           "type": "string",
           "minLength": 1
+        },
+        "shot_suffix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "refsheet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["suffix", "seeds"],
+          "properties": {
+            "suffix": {
+              "type": "string",
+              "minLength": 1
+            },
+            "seeds": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
         },
         "looks": {
           "type": "array",

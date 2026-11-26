@@ -41,3 +41,16 @@
 - **Result:** `<per candidate: texture, does it fight the voice?, does the motif return?>`
 - **Evidence:** runs_kaggle.jsonl lines `<…>`, GPU name, latency, GPU minutes
 - **Decision:** `<seed>`, because `<…>`
+
+## E5: Choosing one reference image per look
+
+- **Date:** 2026-11-26
+- **Hypothesis:** choosing the three references for cross-look consistency (the same build, skin tone and hair at 16, about 18, and in her thirties) gives a more consistent character across shots than choosing each look's best-looking image on its own.
+- **Change:** 4 options per look (seeds 1–4), same prompt per look; only the seed varies. Generated at 576×1024 to save free image allowance (references are shrunk below 512 px before use).
+- **Result:**
+  - **L1 (16, leaving home):** chose **L1_4**, because `<why: e.g. looks closest to 16, bundle colour right, posture matches L2/L3>`.
+  - **L2 (student):** chose **L2_1**, because `<why>`.
+  - **L3 (mother):** chose **L3_4**, because `<why>`.
+  - Rejected options: `<one line on what was wrong with the others, e.g. face visible, looked older, bundle wrong colour>`.
+- **Evidence:** `outputs/refs/L1_1–4, L2_1–4, L3_1–4.png`; runs.jsonl lines `<refsheet lines>` (Cloudflare FLUX.2 klein 4B, latency per image, ≈ 1,250 neurons for all 12).
+- **Decision:** `ref_image` set to L1_4, L2_1, L3_4. Every shot with a look sends its reference as `input_image_0`. E6 tests whether this actually keeps her consistent.

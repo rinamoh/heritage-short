@@ -10,7 +10,16 @@ import jsonschema
 
 from pipeline.common import config
 
-STAGES: tuple[str, ...] = ("keyframes", "narration", "shots", "assemble", "radio", "music-plan", "music-import")
+STAGES: tuple[str, ...] = (
+    "refsheet",
+    "keyframes",
+    "narration",
+    "shots",
+    "assemble",
+    "radio",
+    "music-plan",
+    "music-import",
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -33,6 +42,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--shots",
         default=None,
         help="Optional comma-separated shot IDs to pass to a stage (e.g. s03,s10).",
+    )
+    parser.add_argument(
+        "--shot",
+        default=None,
+        help="keyframes: generate only this shot (e.g. s04).",
+    )
+    parser.add_argument(
+        "--no-ref",
+        action="store_true",
+        help="keyframes: experiment E5, no reference image; saves to outputs/keyframes/e5/.",
     )
     parser.add_argument(
         "--provider",
@@ -99,6 +118,20 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.export_kaggle_jobs:
         print("Kaggle job export is not implemented yet; validation completed.")
+    elif args.stage in ("refsheet", "keyframes"):
+        from pipeline import keyframes
+
+        try:
+            if args.stage == "refsheet":
+                failed = keyframes.run_refsheet()
+            else:
+                failed = keyframes.run_keyframes(shot_id=args.shot, no_ref=args.no_ref)
+        except ValueError as exc:
+            print(f"[ABORT] {exc}")
+            return 2
+        if failed:
+            print(f"Failed: {', '.join(failed)}")
+            return 1
     elif args.stage == "narration":
         from pipeline import narration
 

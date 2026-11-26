@@ -3,30 +3,36 @@
   "audience": "my family: Emaye's children, grandchildren and great-grandchildren.",
   "intent": "at the end they feel grateful, and remember that we're here because of the sacrifice of the people who came before us. Tone: emotional but restrained.",
   "language": "am",
-  "style_block": "1960s Ethiopia, warm golden-hour light, soft film grain, muted earth tones, painterly, gentle, not photorealistic, no text, no readable writing",
+  "style_block": "warm golden-hour light, soft film grain, muted earth tones, painterly, gentle, not photorealistic, no text, no readable writing",
+  "no_text_suffix": "no text, no readable writing",
   "character": {
-    "base": "a slim young Ethiopian woman with dark brown skin and black hair, always seen from behind or at a distance, face not visible",
+    "base": "a slim Ethiopian woman with dark brown skin and black hair, always seen from behind or at a distance, face not visible",
+    "shot_suffix": "seen from behind, face not visible",
+    "refsheet": {
+      "suffix": "full body, seen from behind, face not visible, plain background, vertical composition",
+      "seeds": [1, 2, 3, 4]
+    },
     "looks": [
       {
         "id": "L1",
         "stage": "Age 16, leaving home and arriving",
-        "clothing": "Her day-to-day clothes: a simple, modest village dress; hair in a ponytail",
+        "clothing": "A 16-year-old girl. Her day-to-day clothes: a simple, modest village dress; hair in a ponytail",
         "carries": "The plain, faded greyish-black cloth bundle",
-        "ref_image": null
+        "ref_image": "outputs/refs/L1_4.png"
       },
       {
         "id": "L2",
         "stage": "Student in Addis",
-        "clothing": "School uniform; hair in a ponytail",
+        "clothing": "A teenage student, about 18. School uniform; hair in a ponytail",
         "carries": "School bag, closed books",
-        "ref_image": null
+        "ref_image": "outputs/refs/L2_1.png"
       },
       {
         "id": "L3",
         "stage": "Mother",
-        "clothing": "A dress with a head covering, as Ethiopian mothers commonly wear",
+        "clothing": "A woman in her thirties. A dress with a head covering, as Ethiopian mothers commonly wear",
         "carries": "",
-        "ref_image": null
+        "ref_image": "outputs/refs/L3_4.png"
       }
     ]
   },
@@ -105,7 +111,10 @@
   },
   "output": {
     "fps": 24,
-    "ratios": ["9:16", "16:9"],
+    "ratios": [
+      "9:16",
+      "16:9"
+    ],
     "end_card_s": 3
   },
   "shots": [
@@ -123,10 +132,12 @@
         ]
       },
       "subtitle_en": [
-        ["We are only here because of her."]
+        [
+          "We are only here because of her."
+        ]
       ],
       "keyframe": {
-        "prompt": "A modern desk lamp glowing over an open book with blank pages, night",
+        "prompt": "Present-day Addis Ababa home, night: a modern desk lamp glowing over an open book with blank pages",
         "seed": 101
       },
       "motion": {
@@ -156,7 +167,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "A 1960s southern Ethiopian highland town at dawn: mist, hills, enset plants, round thatched houses",
+        "prompt": "1960s Ethiopia, a southern highland town at dawn: mist, green hills, enset (false banana) plants, round thatched houses",
         "seed": 102
       },
       "motion": {
@@ -169,7 +180,7 @@
     {
       "id": "s03",
       "beat": "The decision",
-      "reason": "The heart of the film: longest, quietest hold",
+      "reason": "The heart of the film: the longest pause after a line (1.5 s, matched only by the ending), so the decision can land",
       "shot_size": "Medium, from behind",
       "look": "L1",
       "hold_after_s": 1.5,
@@ -187,7 +198,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "A girl of 16 at a doorway at dawn, holding a plain faded greyish-black cloth bundle",
+        "prompt": "1960s Ethiopia, a girl of 16 at the doorway of a round thatched house at dawn, holding a plain faded greyish-black cloth bundle",
         "seed": 103
       },
       "motion": {
@@ -217,7 +228,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "One small figure walking on a red dirt road between green hills, the bundle in her hand",
+        "prompt": "1960s Ethiopia, one small figure walking alone on a red dirt road between green hills, the cloth bundle in her hand",
         "seed": 104
       },
       "motion": {
@@ -239,7 +250,7 @@
       },
       "subtitle_en": [],
       "keyframe": {
-        "prompt": "The doorway she left, empty, morning light",
+        "prompt": "1960s Ethiopia, the empty doorway of a round thatched house in soft morning light",
         "seed": 105
       },
       "motion": {
@@ -269,7 +280,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "1960s Addis Ababa at dusk, her tiny at the edge of the frame, bundle in hand",
+        "prompt": "1960s Ethiopia, Addis Ababa at dusk seen from a hillside, low buildings and eucalyptus trees, her tiny at the edge of the frame, the cloth bundle in her hand",
         "seed": 106
       },
       "motion": {
@@ -299,7 +310,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "A lit kuraz on a bare wooden table in a small rented room at night; the cloth bundle in the corner",
+        "prompt": "1960s Ethiopia, a kuraz (a small handmade tin kerosene lamp with an open flame) burning on a bare wooden table in a small rented room at night; the plain faded greyish-black cloth bundle in the corner",
         "seed": 107
       },
       "motion": {
@@ -333,7 +344,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "An empty classroom in morning light: her at one wooden desk, school bag, closed books; a map on the wall in soft focus",
+        "prompt": "1960s Ethiopia, an empty classroom in morning light: her at one wooden desk, school bag, closed books; a faded map on the far wall, out of focus, no readable text",
         "seed": 108
       },
       "motion": {
@@ -363,7 +374,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "A mother at a family table; a kuraz lit; children's notebooks",
+        "prompt": "1960s Ethiopia, a mother at a family table at night, a kuraz (a small handmade tin kerosene lamp with an open flame) lit on the table, children's closed notebooks",
         "seed": 109
       },
       "motion": {
@@ -401,7 +412,7 @@
         ]
       ],
       "keyframe": {
-        "prompt": "Today's home at night: several lamps lit over study desks, no people's faces",
+        "prompt": "Present-day Addis Ababa home at night: several modern desk lamps lit over study desks, and one small tin kerosene lamp among them, no people's faces",
         "seed": 110
       },
       "motion": {
