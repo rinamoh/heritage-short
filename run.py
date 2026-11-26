@@ -29,6 +29,17 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Export Kaggle GPU job specifications to kaggle/jobs/.",
     )
+    parser.add_argument(
+        "--shots",
+        default=None,
+        help="Optional comma-separated shot IDs to pass to a stage (e.g. s03,s10).",
+    )
+    parser.add_argument(
+        "--provider",
+        choices=("gemini", "addis"),
+        default=None,
+        help="Override voice.provider for the narration stage without editing storyboard.json.",
+    )
     return parser
 
 
@@ -66,7 +77,7 @@ def run_validation() -> int:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    """Parse CLI arguments and run storyboard validation (stages not wired yet)."""
+    """Parse CLI arguments, run validation first, and execute the requested stage."""
     parser = build_parser()
     args = parser.parse_args(list(argv) if argv is not None else None)
 
@@ -76,6 +87,11 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if args.export_kaggle_jobs:
         print("Kaggle job export is not implemented yet; validation completed.")
+    elif args.stage == "narration":
+        from pipeline import narration
+
+        shot_ids = narration.parse_shots_arg(args.shots)
+        narration.run_narration(shot_ids=shot_ids, provider_override=args.provider)
     elif args.stage:
         print(f"Stage '{args.stage}' is not implemented yet; validation completed.")
 

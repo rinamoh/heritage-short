@@ -32,7 +32,7 @@ def extract_status_code(exc: BaseException) -> int | None:
         if isinstance(status_code, int):
             return status_code
 
-    for attr in ("status_code", "code"):
+    for attr in ("status_code", "code", "status"):
         value = getattr(exc, attr, None)
         if isinstance(value, int):
             return value
@@ -48,6 +48,9 @@ def is_retryable_error(exc: BaseException) -> bool:
         return 500 <= status_code < 600
 
     if isinstance(exc, (TimeoutError, requests.Timeout)):
+        return True
+
+    if "timeout" in type(exc).__name__.lower():
         return True
 
     message = str(exc).lower()
